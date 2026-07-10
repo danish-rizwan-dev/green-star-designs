@@ -28,25 +28,152 @@ const timeline = [
 export default function AboutPage() {
   return (
     <>
-      {/* Hero Banner */}
-      <section className="relative py-32 bg-navy-900">
-        <div className="absolute inset-0 opacity-20">
-          <Image
-            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80"
-            alt="About Background"
-            fill
-            className="object-cover"
+
+
+      {/* Founder & Director */}
+      <section className="py-24 bg-light">
+        <div className="section-padding max-w-7xl mx-auto">
+          <SectionHeader
+            title="Founder & Director"
+            subtitle="Meet the visionary behind Green Star Designs & Consultants Pvt. Ltd."
           />
-        </div>
-        <div className="relative z-10 section-padding max-w-7xl mx-auto text-center">
-          <ScrollReveal>
-            <div className="gold-line mx-auto mb-6" />
-            <h1 className="font-display text-5xl md:text-6xl font-bold text-white mb-6">
-              About Us
-            </h1>
-            <p className="text-xl text-white/70 max-w-2xl mx-auto">
-              Designing Excellence. Building Trust. Since 2016.
-            </p>
+
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            <ScrollReveal direction="left">
+              <div className="relative">
+                <div className="relative rounded-2xl overflow-hidden aspect-[4/5]">
+                  <Image
+                    src="/wasi-reza.jpg"
+                    alt="Er. Wasi Reza - Founder & Director"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="absolute -bottom-6 -right-6 bg-primary-500 text-white p-6 rounded-2xl shadow-2xl">
+                  <div className="text-3xl font-display font-bold">7+</div>
+                  <div className="text-sm text-white/80">Years Experience</div>
+                </div>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal direction="right">
+              <div className="gold-line mb-6" />
+              <h2 className="font-display text-4xl font-bold text-navy-900 mb-2">
+                Er. Wasi Reza
+              </h2>
+              <p className="text-gold-500 font-semibold text-lg mb-6">
+                M.Tech (Structural Engineering) — Founder & Director
+              </p>
+
+              <p className="text-slate-600 leading-relaxed mb-6">
+                With over seven years of career experience in Construction Project Engineering, 
+                Construction Management, and Structural Design Engineering, Er. Wasi Reza founded 
+                Green Star Designs & Consultants Pvt. Ltd. with a vision to transform the construction 
+                landscape of Bihar and beyond.
+              </p>
+
+              <p className="text-slate-600 leading-relaxed mb-6">
+                Presently working as Project Manager — Civil Division since April 2020, he leads a 
+                team of skilled professionals delivering end-to-end architectural and engineering 
+                solutions. His expertise spans multi-site management, business development, structural 
+                audit, and personnel acquisition & training.
+              </p>
+
+              {/* Social Links */}
+              <div className="flex gap-4 mb-8">
+                <a
+                  href="https://www.instagram.com/greenstardesignbth?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-xl bg-pink-50 flex items-center justify-center 
+                           hover:bg-pink-500 hover:text-white transition-all duration-300 text-pink-600"
+                >
+                  <Instagram size={20} />
+                </a>
+                <a
+                  href="https://www.facebook.com/share/1Hv9DrnmoT/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center 
+                           hover:bg-blue-600 hover:text-white transition-all duration-300 text-blue-600"
+                >
+                  <Facebook size={20} />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/er-wasi-reza-888a1244/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center 
+                           hover:bg-blue-700 hover:text-white transition-all duration-300 text-blue-700"
+                >
+                  <Linkedin size={20} />
+                </a>
+              </div>
+
+              {/* Key Highlights */}
+              <div className="grid sm:grid-cols-2 gap-4">
+                {[
+                  { icon: GraduationCap, text: "M.Tech Structural Engineering — SRM IST Chennai" },
+                  { icon: Briefcase, text: "Project Manager at Green Star Designs since 2020" },
+                  { icon: Building2, text: "Design & detailing of multi-storied buildings using ETAB" },
+                  { icon: HardHat, text: "Structural audit & valuation for Land & Building" },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3 bg-white rounded-xl p-4 
+                                         shadow-md shadow-primary-500/5 border border-slate-100">
+                    <item.icon size={20} className="text-primary-500 shrink-0" />
+                    <span className="text-sm text-slate-700">{item.text}</span>
+                  </div>
+                ))}
+              </div>
+            </ScrollReveal>
+          </div>
+
+          {/* Full Bio */}
+          <ScrollReveal className="mt-16">
+            <div className="bg-white rounded-2xl p-10 shadow-lg shadow-primary-500/5 border border-slate-100">
+              <h3 className="font-display text-2xl font-bold text-navy-900 mb-6">Professional Profile</h3>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div>
+                  <h4 className="font-semibold text-navy-900 mb-4 flex items-center gap-2">
+                    <Briefcase size={18} className="text-gold-500" />
+                    Core Expertise
+                  </h4>
+                  <ul className="space-y-3">
+                    {[
+                      "Project management & site supervision",
+                      "Structural design & analysis using ETAB",
+                      "Seismic analysis of multi-storied buildings",
+                      "Quality testing of construction materials",
+                      "Mix design verification for all work",
+                      "Repair & damage assessment of structures",
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
+                        <CheckCircle2 size={16} className="text-gold-500 mt-0.5 shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-navy-900 mb-4 flex items-center gap-2">
+                    <GraduationCap size={18} className="text-gold-500" />
+                    Education & Affiliations
+                  </h4>
+                  <ul className="space-y-3">
+                    {[
+                      "M.Tech in Structural Engineering — SRM IST Chennai (2015–2017)",
+                      "B.Tech in Civil Engineering — First Class (2011–2015)",
+                      "Senior Affiliate Member of ASCE (American Society of Civil Engineers) since 2011",
+                    ].map((item, i) => (
+                      <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
+                        <CheckCircle2 size={16} className="text-gold-500 mt-0.5 shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
           </ScrollReveal>
         </div>
       </section>
@@ -197,154 +324,6 @@ export default function AboutPage() {
               ))}
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Founder & Director */}
-      <section className="py-24 bg-light">
-        <div className="section-padding max-w-7xl mx-auto">
-          <SectionHeader
-            title="Founder & Director"
-            subtitle="Meet the visionary behind Green Star Designs & Consultants Pvt. Ltd."
-          />
-
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <ScrollReveal direction="left">
-              <div className="relative">
-                <div className="relative rounded-2xl overflow-hidden aspect-[4/5]">
-                  <Image
-                    src="/wasi-reza.jpg"
-                    alt="Er. Wasi Reza - Founder & Director"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="absolute -bottom-6 -right-6 bg-primary-500 text-white p-6 rounded-2xl shadow-2xl">
-                  <div className="text-3xl font-display font-bold">7+</div>
-                  <div className="text-sm text-white/80">Years Experience</div>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal direction="right">
-              <div className="gold-line mb-6" />
-              <h2 className="font-display text-4xl font-bold text-navy-900 mb-2">
-                Er. Wasi Reza
-              </h2>
-              <p className="text-gold-500 font-semibold text-lg mb-6">
-                M.Tech (Structural Engineering) — Founder & Director
-              </p>
-
-              <p className="text-slate-600 leading-relaxed mb-6">
-                With over seven years of career experience in Construction Project Engineering, 
-                Construction Management, and Structural Design Engineering, Er. Wasi Reza founded 
-                Green Star Designs & Consultants Pvt. Ltd. with a vision to transform the construction 
-                landscape of Bihar and beyond.
-              </p>
-
-              <p className="text-slate-600 leading-relaxed mb-6">
-                Presently working as Project Manager — Civil Division since April 2020, he leads a 
-                team of skilled professionals delivering end-to-end architectural and engineering 
-                solutions. His expertise spans multi-site management, business development, structural 
-                audit, and personnel acquisition & training.
-              </p>
-
-              {/* Social Links */}
-              <div className="flex gap-4 mb-8">
-                <a
-                  href="https://www.instagram.com/greenstardesignbth?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-xl bg-pink-50 flex items-center justify-center 
-                           hover:bg-pink-500 hover:text-white transition-all duration-300 text-pink-600"
-                >
-                  <Instagram size={20} />
-                </a>
-                <a
-                  href="https://www.facebook.com/share/1Hv9DrnmoT/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center 
-                           hover:bg-blue-600 hover:text-white transition-all duration-300 text-blue-600"
-                >
-                  <Facebook size={20} />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/er-wasi-reza-888a1244/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center 
-                           hover:bg-blue-700 hover:text-white transition-all duration-300 text-blue-700"
-                >
-                  <Linkedin size={20} />
-                </a>
-              </div>
-
-              {/* Key Highlights */}
-              <div className="grid sm:grid-cols-2 gap-4">
-                {[
-                  { icon: GraduationCap, text: "M.Tech Structural Engineering — SRM IST Chennai" },
-                  { icon: Briefcase, text: "Project Manager at Green Star Designs since 2020" },
-                  { icon: Building2, text: "Design & detailing of multi-storied buildings using ETAB" },
-                  { icon: HardHat, text: "Structural audit & valuation for Land & Building" },
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 bg-white rounded-xl p-4 
-                                         shadow-md shadow-primary-500/5 border border-slate-100">
-                    <item.icon size={20} className="text-primary-500 shrink-0" />
-                    <span className="text-sm text-slate-700">{item.text}</span>
-                  </div>
-                ))}
-              </div>
-            </ScrollReveal>
-          </div>
-
-          {/* Full Bio */}
-          <ScrollReveal className="mt-16">
-            <div className="bg-white rounded-2xl p-10 shadow-lg shadow-primary-500/5 border border-slate-100">
-              <h3 className="font-display text-2xl font-bold text-navy-900 mb-6">Professional Profile</h3>
-              <div className="grid md:grid-cols-2 gap-8">
-                <div>
-                  <h4 className="font-semibold text-navy-900 mb-4 flex items-center gap-2">
-                    <Briefcase size={18} className="text-gold-500" />
-                    Core Expertise
-                  </h4>
-                  <ul className="space-y-3">
-                    {[
-                      "Project management & site supervision",
-                      "Structural design & analysis using ETAB",
-                      "Seismic analysis of multi-storied buildings",
-                      "Quality testing of construction materials",
-                      "Mix design verification for all work",
-                      "Repair & damage assessment of structures",
-                    ].map((item, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
-                        <CheckCircle2 size={16} className="text-gold-500 mt-0.5 shrink-0" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-navy-900 mb-4 flex items-center gap-2">
-                    <GraduationCap size={18} className="text-gold-500" />
-                    Education & Affiliations
-                  </h4>
-                  <ul className="space-y-3">
-                    {[
-                      "M.Tech in Structural Engineering — SRM IST Chennai (2015–2017)",
-                      "B.Tech in Civil Engineering — First Class (2011–2015)",
-                      "Senior Affiliate Member of ASCE (American Society of Civil Engineers) since 2011",
-                    ].map((item, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
-                        <CheckCircle2 size={16} className="text-gold-500 mt-0.5 shrink-0" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
         </div>
       </section>
 

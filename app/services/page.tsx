@@ -269,14 +269,13 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
         layout
         className="bg-white rounded-2xl overflow-hidden shadow-lg shadow-primary-500/5 border border-slate-100"
       >
-        <div className="p-8">
-          <div className="flex items-start gap-6">
-            <div className="w-16 h-16 rounded-xl bg-primary-50 flex items-center justify-center shrink-0">
-              <service.icon size={28} className="text-primary-500" />
+        <div className="p-6">
+          <div className="flex flex-col items-center text-center">
+            <div className="w-14 h-14 rounded-xl bg-primary-50 flex items-center justify-center mb-4">
+              <service.icon size={24} className="text-primary-500" />
             </div>
-            <div className="flex-1">
-              <h3 className="font-display text-2xl font-bold text-navy-900 mb-2">{service.title}</h3>
-              <p className="text-slate-600 mb-4">{service.shortDesc}</p>
+            <h3 className="font-display text-xl font-bold text-navy-900 mb-2">{service.title}</h3>
+            <p className="text-slate-600 text-sm mb-4">{service.shortDesc}</p>
 
               <motion.div
                 initial={false}
@@ -290,7 +289,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
                     <p className="text-slate-600 text-sm leading-relaxed">{service.overview}</p>
                   </div>
 
-                  <div className="grid md:grid-cols-3 gap-6">
+                  <div className="space-y-4">
                     <div>
                       <h4 className="font-semibold text-navy-900 mb-3">Key Benefits</h4>
                       <ul className="space-y-2">
@@ -333,7 +332,7 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
 
               <button
                 onClick={() => setIsExpanded(!isExpanded)}
-                className="mt-4 flex items-center gap-2 text-primary-500 font-medium text-sm 
+                className="mt-4 flex items-center justify-center gap-2 text-primary-500 font-medium text-sm 
                          hover:text-primary-600 transition-colors"
               >
                 {isExpanded ? "Show Less" : "Learn More"}
@@ -343,7 +342,6 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
                 />
               </button>
             </div>
-          </div>
         </div>
       </motion.div>
     </ScrollReveal>
@@ -405,12 +403,7 @@ export default function ServicesPage() {
       {/* Services List */}
       <section className="py-24 bg-light">
         <div className="section-padding max-w-7xl mx-auto">
-          <SectionHeader
-            title="What We Offer"
-            subtitle="From initial concept to final handover, we provide end-to-end services for all your construction needs."
-          />
-
-          <div className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, i) => (
               <ServiceCard key={i} service={service} index={i} />
             ))}
