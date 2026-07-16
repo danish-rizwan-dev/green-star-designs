@@ -31,20 +31,21 @@ export default function Navigation() {
   return (
     <>
       {/* Top Bar */}
-      <div className="bg-primary-500 text-white text-sm py-2 section-padding">
-        <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
-          <div className="flex items-center gap-4">
-            <a href="tel:+917358331731" className="flex items-center gap-1.5 hover:text-gold-400 transition-colors">
-              <Phone size={14} />
-              <span>+91 7358331731</span>
+      <div className="bg-primary-500 text-white text-sm section-padding h-10 flex items-center">
+        <div className="max-w-7xl mx-auto w-full flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0 overflow-hidden">
+            <a href="tel:+917358331731" className="flex items-center gap-1 hover:text-gold-400 transition-colors shrink-0">
+              <Phone size={12} className="sm:size-[14px]" />
+              <span className="text-[10px] sm:text-sm truncate">+91 7358331731</span>
             </a>
-            <a href="mailto:dc.greenstar@gmail.com" className="hidden sm:flex items-center gap-1.5 hover:text-gold-400 transition-colors">
-              <Mail size={14} />
-              <span>dc.greenstar@gmail.com</span>
+            <span className="text-white/30 hidden xs:inline">|</span>
+            <a href="mailto:greenstardesignbth@gmail.com" className="flex items-center gap-1 hover:text-gold-400 transition-colors shrink-0 min-w-0">
+              <Mail size={12} className="sm:size-[14px]" />
+              <span className="text-[10px] sm:text-sm truncate">greenstardesignbth@gmail.com</span>
             </a>
           </div>
-          <div className="text-gold-400 font-medium text-xs tracking-wider uppercase">
-            Building Modern Spaces with Innovation & Engineering Excellence
+          <div className="hidden md:block font-display text-gold-300 text-xs lg:text-sm tracking-[0.2em] uppercase truncate drop-shadow-sm">
+            ✦ We Design ✦ We Create ✦ We Develop ✦
           </div>
         </div>
       </div>
@@ -67,6 +68,7 @@ export default function Navigation() {
                   src="/logo.png"
                   alt="Green Star Designs & Consultants"
                   fill
+                  sizes="48px"
                   className="object-contain"
                   priority
                 />
@@ -149,6 +151,7 @@ export default function Navigation() {
                         src="/logo.png"
                         alt="Green Star Designs"
                         fill
+                        sizes="56px"
                         className="object-contain p-1"
                       />
                     </div>
@@ -201,11 +204,11 @@ export default function Navigation() {
                         </div>
                         +91 7358331731
                       </a>
-                      <a href="mailto:dc.greenstar@gmail.com" className="flex items-center gap-3 text-sm text-slate-600 hover:text-primary-500 transition-colors">
+                      <a href="mailto:greenstardesignbth@gmail.com" className="flex items-center gap-3 text-sm text-slate-600 hover:text-primary-500 transition-colors">
                         <div className="w-8 h-8 rounded-lg bg-primary-50 flex items-center justify-center">
                           <Mail size={14} className="text-primary-500" />
                         </div>
-                        dc.greenstar@gmail.com
+                        greenstardesignbth@gmail.com
                       </a>
                       <div className="flex items-center gap-3 text-sm text-slate-600">
                         <div className="w-8 h-8 rounded-lg bg-primary-50 flex items-center justify-center">
@@ -236,7 +239,7 @@ export default function Navigation() {
                     <a href="https://www.instagram.com/greenstardesignbth?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-lg bg-slate-200 flex items-center justify-center hover:bg-pink-500 hover:text-white transition-all text-slate-500">
                       <Instagram size={16} />
                     </a>
-                    <a href="https://www.facebook.com/share/1Hv9DrnmoT/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-lg bg-slate-200 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all text-slate-500">
+                    <a href="https://www.facebook.com/share/193gmkW4fu/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-lg bg-slate-200 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all text-slate-500">
                       <Facebook size={16} />
                     </a>
                     <a href="https://www.linkedin.com/in/er-wasi-reza-888a1244/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-lg bg-slate-200 flex items-center justify-center hover:bg-blue-700 hover:text-white transition-all text-slate-500">

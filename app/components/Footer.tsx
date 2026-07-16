@@ -41,6 +41,7 @@ export default function Footer() {
                   src="/logo.png"
                   alt="Green Star Designs"
                   fill
+                  sizes="56px"
                   className="object-contain"
                 />
               </div>
@@ -54,7 +55,7 @@ export default function Footer() {
             </p>
             <div className="flex gap-3">
               {[
-                { Icon: Facebook, href: "https://www.facebook.com/share/1Hv9DrnmoT/" },
+                { Icon: Facebook, href: "https://www.facebook.com/share/193gmkW4fu/" },
                 { Icon: Instagram, href: "https://www.instagram.com/greenstardesignbth?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
                 { Icon: Linkedin, href: "https://www.linkedin.com/in/er-wasi-reza-888a1244/" },
                 { Icon: Twitter, href: "#" },
@@ -142,14 +143,14 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-gold-500 shrink-0" />
-                <a href="mailto:dc.greenstar@gmail.com" className="text-slate-400 text-sm hover:text-gold-500 transition-colors">
-                  dc.greenstar@gmail.com
+                <a href="mailto:greenstardesignbth@gmail.com" className="text-slate-400 text-sm hover:text-gold-500 transition-colors">
+                  greenstardesignbth@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Clock size={18} className="text-gold-500 shrink-0" />
                 <span className="text-slate-400 text-sm">
-                  Mon - Sat: 9:00 AM - 7:00 PM
+                  Mon - Sat: 10:00 AM - 5:00 PM
                 </span>
               </li>
               <li className="flex items-start gap-3">

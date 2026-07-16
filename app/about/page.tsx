@@ -59,6 +59,7 @@ export default function AboutPage() {
                     src="/wasi-reza.jpg"
                     alt="Er. Wasi Reza - Board of Director"
                     fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-cover"
                   />
                 </div>
@@ -128,6 +129,8 @@ export default function AboutPage() {
                     src="/erRazida.png"
                     alt="Er. Razida - Board of Director"
                     fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    loading="eager"
                     className="object-cover"
                   />
                 </div>
@@ -212,6 +215,7 @@ export default function AboutPage() {
                     src="/himanshuPoddar.png"
                     alt="Himanshu Poddar"
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover"
                   />
                 </div>
@@ -250,6 +254,7 @@ export default function AboutPage() {
                     src="/priyadarshikunal.png"
                     alt="Priyadarshi Kunal"
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover"
                   />
                 </div>
@@ -357,6 +362,7 @@ export default function AboutPage() {
                     src="/newlogo.png"
                     alt="Green Star Designs & Consultants"
                     fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-contain p-8"
                   />
                 </div>
@@ -495,8 +501,10 @@ export default function AboutPage() {
       {/* Statistics */}
       <section className="py-16 bg-gold-500">
         <div className="section-padding max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
             <AnimatedCounter target={100} suffix="+" label="Happy Clients" />
+            <AnimatedCounter target={2000} suffix="+" label="Structural Designs" />
+            <AnimatedCounter target={500} suffix="+" label="Projects Completed" />
             <AnimatedCounter target={15} suffix="+" label="Team Members" />
             <AnimatedCounter target={10} suffix="+" label="Years of Service" />
           </div>

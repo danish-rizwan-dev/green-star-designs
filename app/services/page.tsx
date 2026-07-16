@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { 
   Ruler, Building2, Home, Building, Search, HardHat, Calculator, MapPin,
@@ -260,14 +260,93 @@ const faqs = [
   },
 ];
 
-function ServiceCard({ service, index }: { service: typeof services[0]; index: number }) {
-  const [isExpanded, setIsExpanded] = useState(false);
+function ServiceModal({ service, onClose }: { service: typeof services[0]; onClose: () => void }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy-900/60 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9, y: 40 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.9, y: 40 }}
+        transition={{ type: "spring", damping: 25, stiffness: 300 }}
+        onClick={e => e.stopPropagation()}
+        className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto"
+      >
+        <div className="sticky top-0 bg-white border-b border-slate-100 px-6 py-4 flex items-center justify-between rounded-t-2xl">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-primary-50 flex items-center justify-center">
+              <service.icon size={20} className="text-primary-500" />
+            </div>
+            <h3 className="font-display text-xl font-bold text-navy-900">{service.title}</h3>
+          </div>
+          <button
+            onClick={onClose}
+            className="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center hover:bg-slate-200 transition-colors text-slate-500"
+          >
+            ✕
+          </button>
+        </div>
 
+        <div className="p-6 space-y-6">
+          <div>
+            <h4 className="font-semibold text-navy-900 mb-2">Overview</h4>
+            <p className="text-slate-600 text-sm leading-relaxed">{service.overview}</p>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-navy-900 mb-3">Key Benefits</h4>
+            <ul className="space-y-2">
+              {service.benefits.map((benefit, i) => (
+                <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
+                  <CheckCircle2 size={14} className="text-gold-500 mt-0.5 shrink-0" />
+                  {benefit}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-navy-900 mb-3">Our Process</h4>
+            <ul className="space-y-2">
+              {service.process.map((step, i) => (
+                <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
+                  <span className="w-5 h-5 rounded-full bg-primary-100 text-primary-500 text-xs font-bold flex items-center justify-center shrink-0">
+                    {i + 1}
+                  </span>
+                  {step}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-semibold text-navy-900 mb-3">Deliverables</h4>
+            <ul className="space-y-2">
+              {service.deliverables.map((item, i) => (
+                <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
+                  <CheckCircle2 size={14} className="text-gold-500 mt-0.5 shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+function ServiceCard({ service, index, onLearnMore }: { service: typeof services[0]; index: number; onLearnMore: () => void }) {
   return (
     <ScrollReveal delay={index * 0.1}>
       <motion.div
         layout
-        className="bg-white rounded-2xl overflow-hidden shadow-lg shadow-primary-500/5 border border-slate-100"
+        className="bg-white rounded-2xl overflow-hidden shadow-lg shadow-primary-500/5 border border-slate-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
       >
         <div className="p-6">
           <div className="flex flex-col items-center text-center">
@@ -275,73 +354,15 @@ function ServiceCard({ service, index }: { service: typeof services[0]; index: n
               <service.icon size={24} className="text-primary-500" />
             </div>
             <h3 className="font-display text-xl font-bold text-navy-900 mb-2">{service.title}</h3>
-            <p className="text-slate-600 text-sm mb-4">{service.shortDesc}</p>
+            <p className="text-slate-600 text-sm mb-6">{service.shortDesc}</p>
 
-              <motion.div
-                initial={false}
-                animate={{ height: isExpanded ? "auto" : 0, opacity: isExpanded ? 1 : 0 }}
-                transition={{ duration: 0.3 }}
-                className="overflow-hidden"
-              >
-                <div className="pt-4 space-y-6">
-                  <div>
-                    <h4 className="font-semibold text-navy-900 mb-2">Overview</h4>
-                    <p className="text-slate-600 text-sm leading-relaxed">{service.overview}</p>
-                  </div>
-
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="font-semibold text-navy-900 mb-3">Key Benefits</h4>
-                      <ul className="space-y-2">
-                        {service.benefits.map((benefit, i) => (
-                          <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
-                            <CheckCircle2 size={14} className="text-gold-500 mt-0.5 shrink-0" />
-                            {benefit}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-navy-900 mb-3">Our Process</h4>
-                      <ul className="space-y-2">
-                        {service.process.map((step, i) => (
-                          <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
-                            <span className="w-5 h-5 rounded-full bg-primary-100 text-primary-500 
-                                           text-xs font-bold flex items-center justify-center shrink-0">
-                              {i + 1}
-                            </span>
-                            {step}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-navy-900 mb-3">Deliverables</h4>
-                      <ul className="space-y-2">
-                        {service.deliverables.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2 text-sm text-slate-600">
-                            <CheckCircle2 size={14} className="text-gold-500 mt-0.5 shrink-0" />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              <button
-                onClick={() => setIsExpanded(!isExpanded)}
-                className="mt-4 flex items-center justify-center gap-2 text-primary-500 font-medium text-sm 
-                         hover:text-primary-600 transition-colors"
-              >
-                {isExpanded ? "Show Less" : "Learn More"}
-                <ChevronDown 
-                  size={16} 
-                  className={`transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`} 
-                />
-              </button>
-            </div>
+            <button
+              onClick={onLearnMore}
+              className="w-full py-3 bg-primary-500 text-white font-medium text-sm rounded-xl hover:bg-primary-600 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/25"
+            >
+              Learn More
+            </button>
+          </div>
         </div>
       </motion.div>
     </ScrollReveal>
@@ -380,6 +401,8 @@ function FAQItem({ faq, index }: { faq: typeof faqs[0]; index: number }) {
 }
 
 export default function ServicesPage() {
+  const [selectedService, setSelectedService] = useState<typeof services[0] | null>(null);
+
   return (
     <>
       {/* Hero Banner */}
@@ -405,11 +428,18 @@ export default function ServicesPage() {
         <div className="section-padding max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, i) => (
-              <ServiceCard key={i} service={service} index={i} />
+              <ServiceCard key={i} service={service} index={i} onLearnMore={() => setSelectedService(service)} />
             ))}
           </div>
         </div>
       </section>
+
+      {/* Service Detail Modal */}
+      <AnimatePresence>
+        {selectedService && (
+          <ServiceModal service={selectedService} onClose={() => setSelectedService(null)} />
+        )}
+      </AnimatePresence>
 
       {/* CTA */}
       <section className="py-24 bg-primary-500">
