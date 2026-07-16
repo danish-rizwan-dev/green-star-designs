@@ -476,7 +476,7 @@ export default function AboutPage() {
                 <ScrollReveal key={i} delay={i * 0.1}>
                   <div className="flex gap-8 items-start">
                     <div className="hidden md:flex w-16 h-16 rounded-full bg-gold-500 items-center justify-center 
-                                  shadow-lg shadow-gold-500/30 shrink-0">
+                                  shadow-lg shadow-gold-500/30 shrink-0 relative z-10">
                       <span className="font-display font-bold text-navy-900">{item.year}</span>
                     </div>
                     <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 flex-1">

@@ -43,8 +43,8 @@ export default function CustomCursor() {
         <div
           className={`transition-opacity duration-300 ${isVisible ? "opacity-100" : "opacity-0"}`}
           style={{
-            width: 8,
-            height: 8,
+            width: 14,
+            height: 14,
             borderRadius: "50%",
             backgroundColor: "#C8A27A",
             transform: "translate(-50%, -50%)",
