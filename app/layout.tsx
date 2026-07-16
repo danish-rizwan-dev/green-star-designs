@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
+import CustomCursor from "./components/CustomCursor";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://greenstardesigns.com"),
   title: {
     default: "Green Star Designs & Consultants Pvt. Ltd. | Architecture & Engineering",
     template: "%s | Green Star Designs",
@@ -54,8 +56,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="overflow-x-hidden">
-      <body className="min-h-screen overflow-x-hidden">
+      <body className="min-h-screen overflow-x-hidden cursor-none">
         <Navigation />
+        <CustomCursor />
         <main>{children}</main>
         <Footer />
       </body>

@@ -131,7 +131,7 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-gold-500 mt-0.5 shrink-0" />
                 <span className="text-slate-400 text-sm">
-                    Plot No. 476, Ward No. 05, Chhawani, Bettiah, Bihar 845438
+                    05 Chhawani, Bettiah, Bihar 845438
                 </span>
               </li>
               <li className="flex items-center gap-3">
@@ -142,14 +142,20 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-gold-500 shrink-0" />
-                <a href="mailto:greenstardesignbth@gmail.com" className="text-slate-400 text-sm hover:text-gold-500 transition-colors">
-                  greenstardesignbth@gmail.com
+                <a href="mailto:dc.greenstar@gmail.com" className="text-slate-400 text-sm hover:text-gold-500 transition-colors">
+                  dc.greenstar@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Clock size={18} className="text-gold-500 shrink-0" />
                 <span className="text-slate-400 text-sm">
                   Mon - Sat: 9:00 AM - 7:00 PM
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <MapPin size={18} className="text-gold-500 mt-0.5 shrink-0" />
+                <span className="text-slate-400 text-sm">
+                  Branch Offices: Khagaria, Kota, Kerala, Delhi
                 </span>
               </li>
             </ul>

@@ -38,13 +38,13 @@ export default function Navigation() {
               <Phone size={14} />
               <span>+91 7358331731</span>
             </a>
-            <a href="mailto:greenstardesignbth@gmail.com" className="hidden sm:flex items-center gap-1.5 hover:text-gold-400 transition-colors">
+            <a href="mailto:dc.greenstar@gmail.com" className="hidden sm:flex items-center gap-1.5 hover:text-gold-400 transition-colors">
               <Mail size={14} />
-              <span>greenstardesignbth@gmail.com</span>
+              <span>dc.greenstar@gmail.com</span>
             </a>
           </div>
           <div className="text-gold-400 font-medium text-xs tracking-wider uppercase">
-            Turning Ideas Into Reality
+            Building Modern Spaces with Innovation & Engineering Excellence
           </div>
         </div>
       </div>
@@ -201,11 +201,11 @@ export default function Navigation() {
                         </div>
                         +91 7358331731
                       </a>
-                      <a href="mailto:greenstardesignbth@gmail.com" className="flex items-center gap-3 text-sm text-slate-600 hover:text-primary-500 transition-colors">
+                      <a href="mailto:dc.greenstar@gmail.com" className="flex items-center gap-3 text-sm text-slate-600 hover:text-primary-500 transition-colors">
                         <div className="w-8 h-8 rounded-lg bg-primary-50 flex items-center justify-center">
                           <Mail size={14} className="text-primary-500" />
                         </div>
-                        greenstardesignbth@gmail.com
+                        dc.greenstar@gmail.com
                       </a>
                       <div className="flex items-center gap-3 text-sm text-slate-600">
                         <div className="w-8 h-8 rounded-lg bg-primary-50 flex items-center justify-center">

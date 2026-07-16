@@ -30,7 +30,7 @@ export default function ContactPage() {
     {
       icon: MapPin,
       title: "Office Address",
-      details: ["Plot No. 476, Ward No. 05, Chhawani", "Infront of Masjid, Main Road", "Bettiah, Bihar 845438"],
+      details: ["05 Chhawani", "Bettiah, Bihar 845438"],
       color: "bg-primary-500",
     },
     {
@@ -43,9 +43,9 @@ export default function ContactPage() {
     {
       icon: Mail,
       title: "Email Address",
-      details: ["greenstardesignbth@gmail.com"],
+      details: ["dc.greenstar@gmail.com"],
       color: "bg-primary-500",
-      link: "mailto:greenstardesignbth@gmail.com",
+      link: "mailto:dc.greenstar@gmail.com",
     },
     {
       icon: Clock,
@@ -338,6 +338,21 @@ export default function ContactPage() {
               Our team is equipped to handle projects in any location with the same commitment to excellence.
             </p>
           </ScrollReveal>
+
+          <div className="mb-12 bg-white rounded-2xl p-8 shadow-lg shadow-primary-500/5 border border-slate-100 max-w-3xl mx-auto">
+            <h3 className="font-display text-xl font-bold text-navy-900 mb-4">Branch Offices</h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {["Khagaria", "Kota", "Kerala", "Delhi"].map((city, i) => (
+                <ScrollReveal key={i} delay={i * 0.05}>
+                  <div className="bg-primary-50 rounded-xl p-4 text-center
+                                hover:bg-primary-100 transition-all duration-300">
+                    <MapPin size={16} className="text-primary-500 mx-auto mb-2" />
+                    <span className="text-sm font-medium text-navy-900">{city}</span>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
             {[

@@ -19,32 +19,35 @@ import {
   Quote,
   Phone,
   Clock,
-  Calendar
+  Calendar,
+  Shield
 } from "lucide-react";
 import AnimatedCounter from "./components/AnimatedCounter";
 import ScrollReveal from "./components/ScrollReveal";
 import SectionHeader from "./components/SectionHeader";
+import TextReveal from "./components/TextReveal";
 
 // Hero Section
 function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
+      {/* Background Video */}
       <div className="absolute inset-0">
-        <Image
-          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80"
-          alt="Luxury Architecture"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-navy-900/80 via-navy-900/60 to-navy-900/90" />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/apartmentBackgroundvideo.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-navy-900/40 via-navy-900/20 to-navy-900/50" />
       </div>
 
       {/* Floating Stats */}
       <div className="absolute top-32 right-8 hidden xl:block space-y-4">
         {[
-          { value: 500, suffix: "+", label: "Projects Completed" },
           { value: 100, suffix: "+", label: "Satisfied Clients" },
           { value: 15, suffix: "+", label: "Expert Engineers" },
           { value: 10, suffix: "+", label: "Years Experience" },
@@ -70,39 +73,45 @@ function HeroSection() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="mb-6"
         >
-          <span className="inline-block px-4 py-2 rounded-full bg-gold-500/20 text-gold-400 text-sm font-medium tracking-wider uppercase border border-gold-500/30">
-            Architecture • Engineering • Construction
+          <span className="inline-block px-4 py-2 rounded-full bg-gold-500/20 text-gold-500 text-sm font-medium tracking-wider uppercase border border-gold-500/30">
+            Premium Architectural & Structural Solutions
           </span>
         </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight"
-        >
-          Turning Ideas
-          <br />
-          <span className="text-gold-500">Into Reality</span>
-        </motion.h1>
+        <TextReveal>
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight"
+          >
+            Designing Dreams
+            <br />
+            <span className="text-gold-500">Into Reality</span>
+          </motion.h1>
+        </TextReveal>
 
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-4 leading-relaxed"
-        >
-          Site Visits, Planning, Supervision & Premium Architectural Execution — Every Detail Matters.
-        </motion.p>
+        <TextReveal delay={0.2}>
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto mb-4 leading-relaxed"
+          >
+            Modern Design. Strong Structure. Excellence in Civil & Structural Engineering.
+          </motion.p>
+        </TextReveal>
 
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-white/60 max-w-2xl mx-auto mb-10"
-        >
-          From concept to construction, we ensure every project is executed with precision, quality, and professional expertise.
-        </motion.p>
+        <TextReveal delay={0.4}>
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="text-white/60 max-w-2xl mx-auto mb-10"
+          >
+            Smart Design for Modern Living — We design, create, and develop premium spaces with innovation and engineering excellence.
+          </motion.p>
+        </TextReveal>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -191,7 +200,7 @@ function AboutSection() {
                 "Cost-Effective Solutions",
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-2">
-                  <CheckCircle2 size={18} className="text-gold-500" />
+                   <CheckCircle2 size={18} className="text-gold-500" />
                   <span className="text-sm font-medium text-navy-900">{item}</span>
                 </div>
               ))}
@@ -212,13 +221,15 @@ function AboutSection() {
 function ExpertiseSection() {
   const services = [
     { icon: Ruler, title: "Architectural Design", desc: "Innovative architectural solutions that blend aesthetics with functionality for residential and commercial projects." },
-    { icon: Building2, title: "Structural Engineering", desc: "Robust structural analysis and design ensuring safety, stability, and compliance with all building codes." },
+    { icon: Building2, title: "Structural Design", desc: "Robust structural analysis and design ensuring safety, stability, and compliance with all building codes." },
     { icon: Home, title: "Interior Design", desc: "Premium interior spaces that reflect your personality while maximizing comfort and utility." },
     { icon: Building, title: "Exterior Design", desc: "Stunning exterior elevations and façade designs that create lasting first impressions." },
-    { icon: Search, title: "Site Inspection", desc: "Thorough site inspections ensuring quality construction, adherence to plans, and structural integrity." },
-    { icon: HardHat, title: "Project Supervision", desc: "End-to-end project management from groundbreaking to final handover with meticulous attention to detail." },
-    { icon: Calculator, title: "BOQ & Estimation", desc: "Accurate Bill of Quantities and cost estimation for transparent budgeting and financial planning." },
-    { icon: MapPin, title: "Construction Consultancy", desc: "Expert guidance on construction methodologies, material selection, and regulatory compliance." },
+    { icon: HardHat, title: "Civil Engineering Consultancy", desc: "Comprehensive civil engineering solutions from planning to execution with expert guidance." },
+    { icon: Search, title: "3D Elevation Design", desc: "Realistic 3D elevation models that bring your architectural vision to life before construction." },
+    { icon: MapPin, title: "Residential Planning", desc: "Thoughtfully planned residential spaces optimized for comfort, functionality, and modern living." },
+    { icon: Building, title: "Commercial Building Design", desc: "Professional commercial building designs tailored for business efficiency and aesthetic appeal." },
+    { icon: Calculator, title: "Construction Consultancy", desc: "Expert guidance on construction methodologies, material selection, and regulatory compliance." },
+    { icon: HardHat, title: "Modern Home Design", desc: "Contemporary home designs that blend modern aesthetics with practical, sustainable living solutions." },
   ];
 
   return (
@@ -241,7 +252,7 @@ function ExpertiseSection() {
               >
                 <div className="w-14 h-14 rounded-xl bg-gold-500/20 flex items-center justify-center mb-6 
                               group-hover:bg-gold-500 group-hover:text-navy-900 transition-all duration-300">
-                  <service.icon size={24} className="text-gold-500 group-hover:text-navy-900" />
+                  <service.icon size={24} className="text-gold-500 group-hover:text-white" />
                 </div>
                 <h3 className="font-display text-xl font-bold text-white mb-3 group-hover:text-gold-500 transition-colors">
                   {service.title}
@@ -342,7 +353,7 @@ function WhyChooseUsSection() {
                 className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 
                          hover:bg-white/20 transition-all duration-300"
               >
-                <feature.icon size={28} className="text-gold-500 mb-4" />
+                 <feature.icon size={28} className="text-gold-500 mb-4" />
                 <h3 className="font-display text-lg font-bold text-white mb-2">{feature.title}</h3>
                 <p className="text-white/70 text-sm">{feature.desc}</p>
               </motion.div>
@@ -358,42 +369,42 @@ function WhyChooseUsSection() {
 function ProjectsSection() {
   const projects = [
     { 
-      image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
-      name: "The Emerald Residence", 
+      image: "/buildings/sayamkunjcomplex2.png",
+      name: "Sayam Kunj Complex", 
       category: "Residential", 
       location: "Bettiah, Bihar",
-      desc: "A luxurious 4-bedroom villa with modern amenities and sustainable design features."
+      desc: "A premium residential complex with modern amenities and sustainable design."
     },
     { 
-      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
-      name: "Skyline Corporate Tower", 
+      image: "/buildings/ZakirComplex.jpg",
+      name: "Zakir Complex", 
       category: "Commercial", 
-      location: "Patna, Bihar",
-      desc: "12-story commercial complex with smart building technology and premium office spaces."
+      location: "Bettiah, Bihar",
+      desc: "Landmark commercial complex with modern architecture and premium spaces."
     },
     { 
-      image: "https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=800&q=80",
+      image: "/buildings/building3.png",
       name: "Green Valley School", 
       category: "Institutional", 
       location: "Muzaffarpur, Bihar",
-      desc: "State-of-the-art educational facility designed for 2000 students with modern laboratories."
+      desc: "State-of-the-art educational facility designed for modern learning."
     },
     { 
-      image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80",
-      name: "Royal Heights Apartments", 
+      image: "/buildings/sayamkunjcomplex.png",
+      name: "Sayam Kunj Complex Phase II", 
       category: "Apartment", 
       location: "Bettiah, Bihar",
-      desc: "Premium residential complex with 48 units, rooftop garden, and community amenities."
+      desc: "Premium residential complex with community spaces and modern aesthetics."
     },
     { 
-      image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80",
+      image: "/buildings/buildng5.png",
       name: "Heritage Villa", 
       category: "Villa", 
       location: "Darbhanga, Bihar",
-      desc: "Traditional architecture blended with modern comforts in a sprawling 2-acre estate."
+      desc: "Traditional architecture blended with modern comforts."
     },
     { 
-      image: "https://images.unsplash.com/photo-1600585154363-67eb9e2e2099?w=800&q=80",
+      image: "/buildings/structureimage2.png",
       name: "Industrial Park Phase I", 
       category: "Industrial", 
       location: "Bihta, Bihar",
@@ -552,6 +563,77 @@ function TestimonialsSection() {
   );
 }
 
+// Company Pillars
+function PillarsSection() {
+  const pillars = [
+    {
+      title: "Project Green Roofs",
+      desc: "Promoting sustainable architecture with eco-friendly green roofing solutions that enhance energy efficiency and environmental harmony.",
+      icon: Building2,
+    },
+    {
+      title: "Accessible and Equitable Properties",
+      desc: "Designing inclusive spaces that are accessible to all, ensuring equitable access to premium architectural solutions.",
+      icon: Home,
+    },
+    {
+      title: "Advancing Ethical Practices",
+      desc: "Upholding the highest standards of integrity, transparency, and professional ethics in every project we undertake.",
+      icon: Shield,
+    },
+  ];
+
+  return (
+    <section className="py-24 bg-light">
+      <div className="section-padding max-w-7xl mx-auto text-center">
+        <ScrollReveal>
+          <div className="gold-line mx-auto mb-6" />
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-navy-900 mb-4">
+            GREEN STAR DESIGNS
+          </h2>
+          <p className="text-gold-500 font-semibold text-lg mb-12">
+            &amp; CONSULTANTS PVT. LTD.
+          </p>
+        </ScrollReveal>
+
+        <div className="grid md:grid-cols-3 gap-8 mb-12">
+          {pillars.map((pillar, i) => (
+            <ScrollReveal key={i} delay={i * 0.15}>
+              <motion.div
+                whileHover={{ y: -8 }}
+                className="bg-white rounded-2xl p-8 shadow-lg shadow-primary-500/5 border border-slate-100 
+                         hover:shadow-xl hover:shadow-primary-500/10 transition-all duration-500"
+              >
+                <div className="w-16 h-16 rounded-2xl bg-primary-50 flex items-center justify-center mx-auto mb-6">
+                  <pillar.icon size={32} className="text-primary-500" />
+                </div>
+                <h3 className="font-display text-xl font-bold text-navy-900 mb-3">{pillar.title}</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">{pillar.desc}</p>
+              </motion.div>
+            </ScrollReveal>
+          ))}
+        </div>
+
+        <ScrollReveal>
+          <div className="bg-primary-500 rounded-2xl p-10 text-white">
+            <h3 className="font-display text-2xl md:text-3xl font-bold mb-4">
+              WE DESIGN &nbsp; WE CREATE &nbsp; WE DEVELOP
+            </h3>
+            <p className="text-white/80 max-w-2xl mx-auto mb-6">
+              Building Modern Spaces with Innovation &amp; Engineering Excellence.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link href="/projects" className="btn-gold inline-flex items-center gap-2">
+                Read More
+              </Link>
+            </div>
+          </div>
+        </ScrollReveal>
+      </div>
+    </section>
+  );
+}
+
 // CTA Section
 function CTASection() {
   return (
@@ -590,8 +672,7 @@ function StatsBanner() {
   return (
     <section className="py-16 bg-gold-500">
       <div className="section-padding max-w-7xl mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          <AnimatedCounter target={500} suffix="+" label="Projects Completed" />
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
           <AnimatedCounter target={100} suffix="+" label="Satisfied Clients" />
           <AnimatedCounter target={15} suffix="+" label="Expert Engineers" />
           <AnimatedCounter target={10} suffix="+" label="Years Experience" />
@@ -613,6 +694,7 @@ export default function HomePage() {
       <WhyChooseUsSection />
       <ProjectsSection />
       <TestimonialsSection />
+      <PillarsSection />
       <CTASection />
     </>
   );
