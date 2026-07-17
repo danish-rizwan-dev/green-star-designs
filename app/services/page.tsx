@@ -461,6 +461,20 @@ export default function ServicesPage() {
 
       {/* FAQ Section */}
       <section className="py-24 bg-light">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: faqs.map((f) => ({
+                "@type": "Question",
+                name: f.question,
+                acceptedAnswer: { "@type": "Answer", text: f.answer },
+              })),
+            }),
+          }}
+        />
         <div className="section-padding max-w-4xl mx-auto">
           <SectionHeader
             title="Frequently Asked Questions"

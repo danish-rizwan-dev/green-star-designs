@@ -2,15 +2,12 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: "Learn about Green Star Designs & Consultants Pvt. Ltd. - Bettiah's premier architecture and civil engineering firm. Meet our board of directors, leadership team, and discover our mission, values, and 500+ completed projects journey since 2016.",
+  description: "Learn about Green Star Designs & Consultants Pvt. Ltd. — a premier architecture and engineering consultancy based in Bettiah, Bihar. Meet our team of 15+ expert engineers led by Er. Wasi Reza and Er. Razida.",
   openGraph: {
-    title: "About Green Star Designs & Consultants Pvt. Ltd.",
-    description: "Premium architecture, civil engineering & construction consultancy firm based in Bettiah, Bihar. 500+ projects completed since 2016.",
-    images: [{ url: "/logo.png", width: 1200, height: 630, alt: "Green Star Designs - About Us" }],
-  },
-  twitter: {
-    title: "About Green Star Designs & Consultants Pvt. Ltd.",
-    description: "Premium architecture & civil engineering firm in Bettiah, Bihar. 500+ projects completed since 2016.",
+    title: "About Green Star Designs & Consultants | Architecture & Engineering",
+    description: "Meet the leadership team behind Green Star Designs. Board of Directors, advisors, and our journey since 2016.",
+    url: "https://greenstardesign.in/about",
+    images: [{ url: "/og-image.svg", width: 1200, height: 630, alt: "Green Star Designs & Consultants" }],
   },
   alternates: {
     canonical: "https://greenstardesign.in/about",
@@ -18,5 +15,5 @@ export const metadata: Metadata = {
 };
 
 export default function AboutLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return children;
 }

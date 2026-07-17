@@ -8,10 +8,10 @@ import AnimatedBot from "./components/AnimatedBot";
 export const metadata: Metadata = {
   metadataBase: new URL("https://greenstardesign.in"),
   title: {
-    default: "Green Star Designs & Consultants Pvt. Ltd. | Architecture & Engineering",
+    default: "Green Star Designs | Architecture & Engineering, Bettiah Bihar",
     template: "%s | Green Star Designs",
   },
-  description: "Green Star Designs & Consultants Pvt. Ltd. - Top architecture, civil engineering, structural design & construction consultancy in Bettiah, Bihar. Premium architectural design, site supervision, BOQ estimation, interior & exterior design services across India. Turning Ideas Into Reality.",
+  description: "Green Star Designs & Consultants — top architecture, civil engineering & construction consultancy in Bettiah, Bihar. Premium architectural design, site supervision, BOQ estimation, interior & exterior design across India.",
   keywords: [
     "Green Star Design", "Green Star Designs", "Green Star Designs & Consultants",
     "architecture firm Bettiah", "civil engineer Bihar", "structural design India",
@@ -30,27 +30,27 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     url: "https://greenstardesign.in",
-    siteName: "Green Star Designs & Consultants Pvt. Ltd.",
-    title: "Green Star Designs & Consultants Pvt. Ltd. | Architecture & Engineering",
-    description: "Premium architecture, civil engineering, structural design & construction consultancy in Bettiah, Bihar. Serving all India with architectural design, project supervision & more.",
+    siteName: "Green Star Designs & Consultants",
+    title: "Green Star Designs | Architecture & Engineering, Bettiah Bihar",
+    description: "Premium architecture, civil engineering & construction consultancy in Bettiah, Bihar. Serving all India with architectural design, structural engineering & project supervision.",
     images: [{
-      url: "/logo.png",
+      url: "/og-image.svg",
       width: 1200,
       height: 630,
-      alt: "Green Star Designs & Consultants",
+      alt: "Green Star Designs & Consultants — Architecture & Engineering",
     }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Green Star Designs & Consultants Pvt. Ltd. | Architecture & Engineering",
-    description: "Premium architecture, civil engineering, structural design & construction consultancy in Bettiah, Bihar.",
-    images: ["/logo.png"],
+    title: "Green Star Designs | Architecture & Engineering, Bettiah Bihar",
+    description: "Architecture, civil engineering & construction consultancy in Bettiah, Bihar.",
+    images: ["/og-image.svg"],
   },
   alternates: {
     canonical: "https://greenstardesign.in",
   },
   verification: {
-    google: "your-google-verification-code",
+    google: "f_u40XPoiSJ7UacEIVuhbCWbCl_3iBTJzWUNfdhz2vo",
   },
   other: {
     "geo.region": "IN-BR",
@@ -66,7 +66,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="overflow-x-hidden">
+    <html lang="en-IN" className="overflow-x-hidden">
       <body className="min-h-screen overflow-x-hidden">
         <script
           type="application/ld+json"
@@ -90,7 +90,7 @@ export default function RootLayout({
                   },
                   contactPoint: {
                     "@type": "ContactPoint",
-                    telephone: "+91-",
+                    telephone: "+91-7358331731",
                     contactType: "customer service",
                     availableLanguage: ["English", "Hindi"],
                   },
@@ -128,7 +128,7 @@ export default function RootLayout({
                   name: "Green Star Designs & Consultants Pvt. Ltd.",
                   image: "https://greenstardesign.in/logo.png",
                   url: "https://greenstardesign.in",
-                  telephone: "+91-",
+                   telephone: "+91-7358331731",
                   priceRange: "₹₹",
                   address: {
                     "@type": "PostalAddress",

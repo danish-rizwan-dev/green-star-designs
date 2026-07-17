@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { 
   MapPin, Phone, Mail, Clock, Send, MessageCircle, AlertTriangle,
-  CheckCircle2, Facebook, Instagram, Linkedin, Twitter
+  CheckCircle2, Facebook, Instagram, Linkedin
 } from "lucide-react";
 import ScrollReveal from "../components/ScrollReveal";
 import SectionHeader from "../components/SectionHeader";
@@ -43,9 +43,9 @@ export default function ContactPage() {
     {
       icon: Mail,
       title: "Email Address",
-      details: ["dc.greenstar@gmail.com"],
+       details: ["greenstardesignbth@gmail.com"],
       color: "bg-primary-500",
-      link: "mailto:dc.greenstar@gmail.com",
+       link: "mailto:greenstardesignbth@gmail.com",
     },
     {
       icon: Clock,
@@ -304,7 +304,6 @@ export default function ContactPage() {
                       { Icon: Facebook, href: "https://www.facebook.com/share/1Hv9DrnmoT/" },
                       { Icon: Instagram, href: "https://www.instagram.com/greenstardesignbth?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
                       { Icon: Linkedin, href: "https://www.linkedin.com/in/er-wasi-reza-888a1244/" },
-                      { Icon: Twitter, href: "#" },
                     ].map(({ Icon, href }, i) => (
                       <a
                         key={i}

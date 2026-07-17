@@ -12,6 +12,7 @@ const navLinks = [
   { href: "/about", label: "About Us" },
   { href: "/services", label: "Services" },
   { href: "/projects", label: "Projects" },
+  { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -74,9 +75,9 @@ export default function Navigation() {
                 />
               </div>
               <div className="text-center">
-                <h1 className="font-display text-lg font-bold leading-tight text-primary-500 transition-colors">
+                <div className="font-display text-lg font-bold leading-tight text-primary-500 transition-colors">
                   Green Star
-                </h1>
+                </div>
                 <p className="text-[9px] tracking-widest uppercase text-gold-600">Designs & Consultants</p>
                 <p className="text-[8px] tracking-widest uppercase text-gold-600">Pvt. Ltd.</p>
               </div>
@@ -171,6 +172,7 @@ export default function Navigation() {
                       { href: "/about", icon: Info, label: "About Us" },
                       { href: "/services", icon: LayoutDashboard, label: "Services" },
                       { href: "/projects", icon: Briefcase, label: "Projects" },
+                      { href: "/blog", icon: MessageSquare, label: "Blog" },
                       { href: "/contact", icon: MessageSquare, label: "Contact" },
                     ].map(({ href, icon: Icon, label }, index) => (
                       <motion.div
@@ -236,7 +238,7 @@ export default function Navigation() {
                     Get Consultation
                   </motion.button>
                   <div className="flex justify-center gap-3">
-                    <a href="https://www.instagram.com/greenstardesignbth?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-lg bg-slate-200 flex items-center justify-center hover:bg-pink-500 hover:text-white transition-all text-slate-500">
+                    <a href="https://www.instagram.com/greenstardesignbth" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-lg bg-slate-200 flex items-center justify-center hover:bg-pink-500 hover:text-white transition-all text-slate-500">
                       <Instagram size={16} />
                     </a>
                     <a href="https://www.facebook.com/share/193gmkW4fu/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-lg bg-slate-200 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all text-slate-500">

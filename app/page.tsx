@@ -26,6 +26,7 @@ import AnimatedCounter from "./components/AnimatedCounter";
 import ScrollReveal from "./components/ScrollReveal";
 import SectionHeader from "./components/SectionHeader";
 import TextReveal from "./components/TextReveal";
+import { blogPosts } from "./blog/posts";
 
 // Hero Section
 function HeroSection() {
@@ -87,9 +88,9 @@ function HeroSection() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="font-display text-[2.5rem] sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-4 sm:mb-6 leading-[1.1]"
           >
-            Designing Dreams
+            Green Star Designs
             <br className="hidden sm:block" />
-            <span className="text-gold-500">Into Reality</span>
+            <span className="text-gold-500">Architecture & Engineering</span>
           </motion.h1>
         </TextReveal>
 
@@ -544,6 +545,29 @@ function TestimonialsSection() {
 
   return (
     <section className="py-24 bg-navy-900">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            name: "Green Star Designs & Consultants Pvt. Ltd.",
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: "5",
+              bestRating: "5",
+              ratingCount: "4",
+              reviewCount: "4",
+            },
+            review: testimonials.map((t) => ({
+              "@type": "Review",
+              author: { "@type": "Person", name: t.name },
+              reviewRating: { "@type": "Rating", ratingValue: t.rating, bestRating: "5" },
+              reviewBody: t.text,
+            })),
+          }),
+        }}
+      />
       <div className="section-padding max-w-7xl mx-auto">
         <SectionHeader
           title="Client Testimonials"
@@ -656,6 +680,68 @@ function PillarsSection() {
   );
 }
 
+// Blog Section
+function BlogSection() {
+  const latestPosts = blogPosts.slice(0, 3);
+
+  return (
+    <section className="py-24 bg-white">
+      <div className="section-padding max-w-7xl mx-auto">
+        <SectionHeader
+          title="Latest from Our Blog"
+          subtitle="Expert insights on architecture, engineering, and construction from the Green Star Designs team."
+        />
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {latestPosts.map((post, i) => (
+            <ScrollReveal key={post.slug} delay={i * 0.1}>
+              <Link
+                href={`/blog/${post.slug}`}
+                className="group block bg-light rounded-2xl overflow-hidden shadow-lg shadow-primary-500/5 border border-slate-100 hover:shadow-2xl hover:shadow-primary-500/10 transition-all duration-500"
+              >
+                <div className="relative aspect-[16/9] overflow-hidden">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-gold-500 text-navy-900 text-xs font-bold rounded-full">
+                      {post.category}
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <div className="flex items-center gap-2 text-xs text-slate-500 mb-2">
+                    <span>{post.date}</span>
+                    <span>•</span>
+                    <span>{post.author}</span>
+                  </div>
+                  <h3 className="font-display text-lg font-bold text-navy-900 mb-2 group-hover:text-primary-500 transition-colors line-clamp-2">
+                    {post.title}
+                  </h3>
+                  <p className="text-slate-600 text-sm leading-relaxed line-clamp-2">
+                    {post.excerpt}
+                  </p>
+                </div>
+              </Link>
+            </ScrollReveal>
+          ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <Link href="/blog" className="btn-primary inline-flex items-center gap-2 group">
+            View All Articles
+            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // CTA Section
 function CTASection() {
   return (
@@ -719,6 +805,7 @@ export default function HomePage() {
       <WhyChooseUsSection />
       <ProjectsSection />
       <TestimonialsSection />
+      <BlogSection />
       <PillarsSection />
       <CTASection />
     </>

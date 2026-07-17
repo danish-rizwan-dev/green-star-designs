@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Facebook, Instagram, Linkedin } from "lucide-react";
 import Image from "next/image";
 
 const quickLinks = [
@@ -10,6 +10,7 @@ const quickLinks = [
   { href: "/about", label: "About Us" },
   { href: "/services", label: "Services" },
   { href: "/projects", label: "Projects" },
+  { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -58,7 +59,6 @@ export default function Footer() {
                 { Icon: Facebook, href: "https://www.facebook.com/share/193gmkW4fu/" },
                 { Icon: Instagram, href: "https://www.instagram.com/greenstardesignbth?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" },
                 { Icon: Linkedin, href: "https://www.linkedin.com/in/er-wasi-reza-888a1244/" },
-                { Icon: Twitter, href: "#" },
               ].map(({ Icon, href }, i) => (
                 <a
                   key={i}
