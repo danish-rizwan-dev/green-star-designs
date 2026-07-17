@@ -52,7 +52,7 @@ Whether you're building a home in Bettiah or a commercial complex in Patna, stru
     date: "2026-07-10",
     category: "Structural Engineering",
     tags: ["structural design", "building safety", "engineering", "construction", "Bihar"],
-    image: "/buildings/sayamkunjcomplex2.png",
+    image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=1200&q=80",
   },
   {
     slug: "choosing-right-architect-bettiah-bihar",
@@ -121,7 +121,7 @@ At Green Star Designs & Consultants Pvt. Ltd., we offer free initial consultatio
     date: "2026-06-28",
     category: "Architecture",
     tags: ["architect Bettiah", "choose architect", "Bihar architecture", "home design", "construction"],
-    image: "/buildings/building3.png",
+    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80",
   },
   {
     slug: "site-supervision-why-it-matters-construction",
@@ -183,7 +183,7 @@ At Green Star Designs & Consultants, our site supervision services have saved cl
     date: "2026-06-15",
     category: "Construction Management",
     tags: ["site supervision", "construction quality", "project management", "building inspection", "Bihar"],
-    image: "/buildings/ZakirComplex.jpg",
+    image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&q=80",
   },
   {
     slug: "vastu-compliant-modern-architecture",
@@ -243,7 +243,7 @@ Contact us for a consultation on your Vastu-compliant dream project.
     date: "2026-06-01",
     category: "Architecture",
     tags: ["Vastu", "architecture", "modern design", "Bihar homes", "Vastu compliant"],
-    image: "/buildings/sayamkunjcomplex.png",
+    image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&q=80",
   },
   {
     slug: "boq-estimation-why-accurate-costing-matters",
@@ -299,6 +299,6 @@ Need an accurate BOQ for your upcoming project? Get in touch with Green Star Des
     date: "2026-05-20",
     category: "Project Management",
     tags: ["BOQ", "estimation", "construction cost", "budget planning", "Bihar construction"],
-    image: "/buildings/structureimage2.png",
+    image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80",
   },
 ];

@@ -3,7 +3,7 @@ import { blogPosts } from "./blog/posts";
 
 const baseUrl = "https://greenstardesign.in";
 
-const img = (path: string) => `${baseUrl}${path}`;
+const img = (path: string) => path.startsWith("http") ? path : `${baseUrl}${path}`;
 
 const buildingImages = [
   img("/buildings/sayamkunjcomplex2.png"),

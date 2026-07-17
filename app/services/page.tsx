@@ -408,7 +408,7 @@ export default function ServicesPage() {
       {/* Hero Banner */}
       <section className="relative py-32 bg-navy-900">
         <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80')] bg-cover bg-center" />
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1920&q=80')] bg-cover bg-center" />
         </div>
         <div className="relative z-10 section-padding max-w-7xl mx-auto text-center">
           <ScrollReveal>

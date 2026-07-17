@@ -7,7 +7,7 @@ export default function BlogPage() {
     <>
       <section className="relative py-32 bg-navy-900">
         <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80')] bg-cover bg-center" />
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1920&q=80')] bg-cover bg-center" />
         </div>
         <div className="relative z-10 section-padding max-w-7xl mx-auto text-center">
           <div className="w-20 h-1 bg-gradient-to-r from-gold-400 to-gold-600 rounded-full mx-auto mb-6" />

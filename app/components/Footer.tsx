@@ -156,7 +156,7 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="text-gold-500 mt-0.5 shrink-0" />
                 <span className="text-slate-400 text-sm">
-                  Branch Offices: Khagaria, Kota, Kerala, Delhi
+                  Branch Offices: Delhi, Chennai
                 </span>
               </li>
             </ul>

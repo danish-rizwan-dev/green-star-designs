@@ -70,7 +70,7 @@ export default function ContactPage() {
       {/* Hero Banner */}
       <section className="relative py-32 bg-navy-900">
         <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80')] bg-cover bg-center" />
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80')] bg-cover bg-center" />
         </div>
         <div className="relative z-10 section-padding max-w-7xl mx-auto text-center">
           <ScrollReveal>
@@ -338,10 +338,11 @@ export default function ContactPage() {
             </p>
           </ScrollReveal>
 
-          <div className="mb-12 bg-white rounded-2xl p-8 shadow-lg shadow-primary-500/5 border border-slate-100 max-w-3xl mx-auto">
-            <h3 className="font-display text-xl font-bold text-navy-900 mb-4">Branch Offices</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {["Khagaria", "Kota", "Kerala", "Delhi"].map((city, i) => (
+          <div className="bg-white rounded-2xl p-8 shadow-lg shadow-primary-500/5 border border-slate-100 max-w-3xl mx-auto">
+            <h3 className="font-display text-xl font-bold text-navy-900 mb-4">Serving All Across India</h3>
+            <p className="text-slate-600 mb-6">Headquartered in Bettiah, Bihar with branch offices in:</p>
+            <div className="grid grid-cols-2 gap-4 max-w-md mx-auto mb-6">
+              {["Delhi", "Chennai"].map((city, i) => (
                 <ScrollReveal key={i} delay={i * 0.05}>
                   <div className="bg-primary-50 rounded-xl p-4 text-center
                                 hover:bg-primary-100 transition-all duration-300">
@@ -351,27 +352,7 @@ export default function ContactPage() {
                 </ScrollReveal>
               ))}
             </div>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-            {[
-              "Bihar",
-              "Uttar Pradesh",
-              "West Bengal",
-              "Jharkhand",
-              "Delhi NCR",
-              "Madhya Pradesh",
-              "Rajasthan",
-              "All India",
-            ].map((state, i) => (
-              <ScrollReveal key={i} delay={i * 0.05}>
-                <div className="bg-white rounded-xl p-4 shadow-md shadow-primary-500/5 border border-slate-100
-                              hover:shadow-lg hover:shadow-primary-500/10 transition-all duration-300">
-                  <MapPin size={16} className="text-primary-500 mx-auto mb-2" />
-                  <span className="text-sm font-medium text-navy-900">{state}</span>
-                </div>
-              </ScrollReveal>
-            ))}
+            <p className="text-sm text-gold-600 font-semibold">✦ Projects completed across Bihar, Uttar Pradesh, West Bengal, Jharkhand, Delhi NCR, Madhya Pradesh, Rajasthan, and more</p>
           </div>
         </div>
       </section>
