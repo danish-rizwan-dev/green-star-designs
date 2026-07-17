@@ -3,26 +3,18 @@ import { blogPosts } from "./blog/posts";
 
 const baseUrl = "https://greenstardesign.in";
 
-const buildingImages = [
-  "/buildings/sayamkunjcomplex2.png",
-  "/buildings/ZakirComplex.jpg",
-  "/buildings/building3.png",
-  "/buildings/sayamkunjcomplex.png",
-  "/buildings/buildng5.png",
-  "/buildings/structureimage2.png",
-  "/buildings/trndzmall.png",
-  "/buildings/building4.png",
-  "/buildings/floormap1.png",
-];
+const img = (path: string) => `${baseUrl}${path}`;
 
-const publicImages = [
-  "/logo.png",
-  "/newlogo.png",
-  "/og-image.svg",
-  "/erRazida.png",
-  "/himanshuPoddar.png",
-  "/priyadarshikunal.png",
-  "/wasi-reza.jpg",
+const buildingImages = [
+  img("/buildings/sayamkunjcomplex2.png"),
+  img("/buildings/ZakirComplex.jpg"),
+  img("/buildings/building3.png"),
+  img("/buildings/sayamkunjcomplex.png"),
+  img("/buildings/buildng5.png"),
+  img("/buildings/structureimage2.png"),
+  img("/buildings/trndzmall.png"),
+  img("/buildings/building4.png"),
+  img("/buildings/floormap1.png"),
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -32,14 +24,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: 1.0,
-      images: ["/logo.png", ...buildingImages.slice(0, 3)],
+      images: [img("/logo.png"), ...buildingImages.slice(0, 3)],
     },
     {
       url: `${baseUrl}/about`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.9,
-      images: ["/erRazida.png", "/himanshuPoddar.png", "/priyadarshikunal.png", "/wasi-reza.jpg", "/newlogo.png"],
+      images: [img("/erRazida.png"), img("/himanshuPoddar.png"), img("/priyadarshikunal.png"), img("/wasi-reza.jpg"), img("/newlogo.png")],
     },
     {
       url: `${baseUrl}/services`,
@@ -73,7 +65,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(post.date),
     changeFrequency: "monthly" as const,
     priority: 0.7,
-    images: [post.image],
+    images: [img(post.image)],
   }));
 
   return [...staticPages, ...blogEntries];
