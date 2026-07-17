@@ -21,6 +21,8 @@ export default function AnimatedBot() {
   const [dragging, setDragging] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
   const [botThinking, setBotThinking] = useState(false);
+  const [activated, setActivated] = useState(false);
+  const activatedRef = useRef(false);
 
   const onPointerDown = useCallback((e: React.PointerEvent) => {
     const bot = botRef.current;
@@ -51,7 +53,19 @@ export default function AnimatedBot() {
     const bot = botRef.current;
     if (bot) bot.releasePointerCapture(e.pointerId);
 
-    if (!movedRef.current) {
+    if (movedRef.current) {
+      const dx = posRef.current.x - (window.innerWidth - 90);
+      const dy = posRef.current.y - (window.innerHeight - 90);
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 100) {
+        setActivated(false);
+        activatedRef.current = false;
+      }
+    } else {
+      if (!activatedRef.current) {
+        setActivated(true);
+        activatedRef.current = true;
+      }
       setChatOpen(true);
       chatOpenRef.current = true;
     }
@@ -91,62 +105,71 @@ export default function AnimatedBot() {
       const dockDist = Math.sqrt((p.x - dockX) ** 2 + (p.y - dockY) ** 2);
 
       if (!draggingRef.current) {
-        let moveX = 0;
-        let moveY = 0;
-
-        if (botThinkingRef.current) {
-          if (!thinkingTargetRef.current) {
-            const w = window.innerWidth;
-            const h = window.innerHeight;
-            thinkingTargetRef.current = { x: w / 2 + 140, y: h / 2 + 180 };
+        if (!activatedRef.current) {
+          const speed = Math.min(1, dockDist / 100) * 10;
+          if (dockDist > 5) {
+            p.x += ((dockX - p.x) / dockDist) * speed;
+            p.y += ((dockY - p.y) / dockDist) * speed;
           }
-          const target = thinkingTargetRef.current;
-          const tdx = target.x - p.x;
-          const tdy = target.y - p.y;
-          const tDist = Math.sqrt(tdx * tdx + tdy * tdy);
-          if (tDist > 10) {
-            const speed = Math.min(1, tDist / 80) * 8;
-            moveX = (tdx / tDist) * speed;
-            moveY = (tdy / tDist) * speed;
-          }
-          dirRef.current = target.x - p.x > 0 ? 1 : -1;
-        } else if (dockedRef.current) {
-          thinkingTargetRef.current = null;
-          if (dockDist > 15) {
-            const speed = Math.min(1, dockDist / 100) * 10;
-            moveX = ((dockX - p.x) / dockDist) * speed;
-            moveY = ((dockY - p.y) / dockDist) * speed;
-          }
-          dirRef.current = dockX - p.x > 0 ? 1 : -1;
+          dirRef.current = 1;
         } else {
-          thinkingTargetRef.current = null;
-          const dx = c.x - p.x;
-          const dy = c.y - p.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          const approachDist = 45;
-          const minDist = 160;
-          const maxDist = 300;
+          let moveX = 0;
+          let moveY = 0;
 
-          if (dist < approachDist) {
-            // freeze
-          } else if (dist < minDist) {
-            const force = (minDist - dist) / minDist;
-            moveX = -(dx / dist) * force * 6;
-            moveY = -(dy / dist) * force * 6;
-            dirRef.current = dx > 0 ? -1 : 1;
-          } else if (dist > maxDist) {
-            const force = (dist - maxDist) / maxDist;
-            moveX = (dx / dist) * force * 2;
-            moveY = (dy / dist) * force * 2;
-            dirRef.current = dx > 0 ? 1 : -1;
+          if (botThinkingRef.current) {
+            if (!thinkingTargetRef.current) {
+              const w = window.innerWidth;
+              const h = window.innerHeight;
+              thinkingTargetRef.current = { x: w / 2 + 140, y: h / 2 + 180 };
+            }
+            const target = thinkingTargetRef.current;
+            const tdx = target.x - p.x;
+            const tdy = target.y - p.y;
+            const tDist = Math.sqrt(tdx * tdx + tdy * tdy);
+            if (tDist > 10) {
+              const speed = Math.min(1, tDist / 80) * 8;
+              moveX = (tdx / tDist) * speed;
+              moveY = (tdy / tDist) * speed;
+            }
+            dirRef.current = target.x - p.x > 0 ? 1 : -1;
+          } else if (dockedRef.current) {
+            thinkingTargetRef.current = null;
+            if (dockDist > 15) {
+              const speed = Math.min(1, dockDist / 100) * 10;
+              moveX = ((dockX - p.x) / dockDist) * speed;
+              moveY = ((dockY - p.y) / dockDist) * speed;
+            }
+            dirRef.current = dockX - p.x > 0 ? 1 : -1;
           } else {
-            moveX += (Math.random() - 0.5) * 0.15;
-            moveY += (Math.random() - 0.5) * 0.15;
-          }
-        }
+            thinkingTargetRef.current = null;
+            const dx = c.x - p.x;
+            const dy = c.y - p.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            const approachDist = 45;
+            const minDist = 160;
+            const maxDist = 300;
 
-        p.x += moveX;
-        p.y += moveY;
+            if (dist < approachDist) {
+              // freeze
+            } else if (dist < minDist) {
+              const force = (minDist - dist) / minDist;
+              moveX = -(dx / dist) * force * 6;
+              moveY = -(dy / dist) * force * 6;
+              dirRef.current = dx > 0 ? -1 : 1;
+            } else if (dist > maxDist) {
+              const force = (dist - maxDist) / maxDist;
+              moveX = (dx / dist) * force * 2;
+              moveY = (dy / dist) * force * 2;
+              dirRef.current = dx > 0 ? 1 : -1;
+            } else {
+              moveX += (Math.random() - 0.5) * 0.15;
+              moveY += (Math.random() - 0.5) * 0.15;
+            }
+          }
+
+          p.x += moveX;
+          p.y += moveY;
+        }
       }
 
       p.x = Math.max(60, Math.min(window.innerWidth - 60, p.x));
@@ -277,7 +300,14 @@ export default function AnimatedBot() {
 
       <div
         ref={badgeRef}
-        onClick={() => { setChatOpen(true); chatOpenRef.current = true; }}
+        onClick={() => {
+          if (!activatedRef.current) {
+            setActivated(true);
+            activatedRef.current = true;
+          }
+          setChatOpen(true);
+          chatOpenRef.current = true;
+        }}
         className="fixed z-[9997] flex items-center gap-1.5 bg-gold-500/80 backdrop-blur-md text-navy-900 text-xs font-bold px-3.5 py-2 rounded-full shadow-lg shadow-gold-500/20 cursor-pointer hover:scale-105 transition-transform duration-200 select-none border border-white/20"
         style={{ bottom: "20px", right: "20px" }}
       >

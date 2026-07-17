@@ -1,8 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { Award, Users, Target, Eye, Heart, Shield, Clock, CheckCircle2, Linkedin, Instagram, Facebook, GraduationCap, Briefcase, Building2, HardHat } from "lucide-react";
+import { Award, Users, Target, Eye, Heart, Shield, Clock, CheckCircle2, Linkedin, Instagram, Facebook, GraduationCap, Briefcase, Building2, HardHat, X } from "lucide-react";
 import ScrollReveal from "../components/ScrollReveal";
 import SectionHeader from "../components/SectionHeader";
 import AnimatedCounter from "../components/AnimatedCounter";
@@ -26,6 +27,16 @@ const timeline = [
 ];
 
 export default function AboutPage() {
+  const [selectedAdvisor, setSelectedAdvisor] = useState<{
+    name: string;
+    role: string;
+    exp: string;
+    field: string;
+    initial: string;
+    image: string | null;
+    bio: string;
+  } | null>(null);
+
   return (
     <>
 
@@ -303,6 +314,8 @@ export default function AboutPage() {
                 exp: "17 Years",
                 field: "Construction",
                 initial: "MR",
+                image: null,
+                bio: "Md. Rizwanullah brings 17 years of hands-on experience in construction. His deep understanding of construction methodologies, material selection, and site execution makes him an invaluable advisor for all our projects.",
               },
               {
                 name: "Noorul Hoda",
@@ -310,6 +323,8 @@ export default function AboutPage() {
                 exp: "34 Years",
                 field: "MEP Services",
                 initial: "NH",
+                image: null,
+                bio: "With 34 years of expertise in MEP (Mechanical, Electrical, Plumbing) Services, Noorul Hoda provides strategic guidance on complex MEP installations. His vast experience ensures all our projects meet the highest standards of electrical and mechanical safety.",
               },
               {
                 name: "Mouli Reddy",
@@ -317,6 +332,8 @@ export default function AboutPage() {
                 exp: "3 Years",
                 field: "MEP Services",
                 initial: "MR",
+                image: null,
+                bio: "Mouli Reddy is a B.Tech in Mechanical Engineering with 3 years of experience in MEP Services. He brings modern engineering knowledge and fresh perspectives to our MEP advisory.",
               },
               {
                 name: "Namrata Solanki",
@@ -324,17 +341,51 @@ export default function AboutPage() {
                 exp: "3 Years",
                 field: "Finance and Marketing",
                 initial: "NS",
+                image: null,
+                bio: "Namrata Solanki holds a B.Tech in Civil Engineering and has 3 years of experience in Finance and Marketing. She provides valuable insights on financial planning and marketing strategy for the firm.",
+              },
+              {
+                name: "Shahid Iqbal",
+                role: "Structural Designer",
+                exp: "5+ Years",
+                field: "Structural Design & Advisory",
+                initial: "SI",
+                image: null,
+                bio: "Shahid Iqbal holds a B.Tech and M.Tech in Structural Engineering with 5+ years of experience. He has completed 100+ structural design projects and is known for his precision, technical excellence, and best-in-class work. His expertise in structural analysis and design ensures every project is safe, efficient, and built to last.",
+              },
+              {
+                name: "Majid Iqbal",
+                role: "Structural Designer",
+                exp: "2+ Years",
+                field: "Structural Design & Analysis",
+                initial: "MI",
+                image: null,
+                bio: "Majid Iqbal holds a B.Tech in Civil Engineering with 2+ years of experience in structural design and analysis. He is skilled in structural modeling, load analysis, and detailing. His dedication and growing expertise make him a rising talent in the structural design team.",
+              },
+              {
+                name: "Nargis Praveen",
+                role: "Architect",
+                exp: "1+ Years",
+                field: "Architectural Design & Planning",
+                initial: "NP",
+                image: null,
+                bio: "Nargis Praveen is a B.Tech graduate and Architect with 1+ years of experience in architectural design and planning. She brings creative vision and attention to detail to every project, specializing in space planning, facade design, and aesthetic innovation.",
               },
             ].map((advisor, i) => (
               <ScrollReveal key={i} delay={i * 0.1}>
                 <motion.div
                   whileHover={{ y: -5 }}
+                  onClick={() => setSelectedAdvisor(advisor)}
                   className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 
-                           hover:bg-white/10 hover:border-gold-500/30 transition-all duration-500 text-center"
+                           hover:bg-white/10 hover:border-gold-500/30 transition-all duration-500 text-center cursor-pointer"
                 >
                   <div className="w-20 h-20 rounded-full bg-gold-500/20 flex items-center justify-center mx-auto mb-6
-                                border-2 border-gold-500/50">
-                    <span className="font-display text-2xl font-bold text-gold-400">{advisor.initial}</span>
+                                border-2 border-gold-500/50 overflow-hidden">
+                    {advisor.image ? (
+                      <Image src={advisor.image} alt={advisor.name} width={80} height={80} className="object-cover w-full h-full" />
+                    ) : (
+                      <span className="font-display text-2xl font-bold text-gold-400">{advisor.initial}</span>
+                    )}
                   </div>
                   <h3 className="font-display text-xl font-bold text-white mb-2">{advisor.name}</h3>
                   <p className="text-gold-400 text-sm mb-3">{advisor.role}</p>
@@ -349,6 +400,63 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
+
+        {/* Advisor Modal */}
+        <AnimatePresence>
+          {selectedAdvisor && (
+            <>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setSelectedAdvisor(null)}
+                className="fixed inset-0 bg-navy-900/80 backdrop-blur-sm z-50"
+              />
+              <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                  transition={{ type: "spring", duration: 0.5 }}
+                  onClick={(e) => e.stopPropagation()}
+                  className="bg-navy-900 rounded-2xl max-w-lg w-full border border-white/10 overflow-hidden"
+                >
+                  <div className="relative p-8">
+                    <button
+                      onClick={() => setSelectedAdvisor(null)}
+                      className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors text-white/60 hover:text-white"
+                    >
+                      <X size={16} />
+                    </button>
+
+                    <div className="flex flex-col items-center text-center">
+                      <div className="w-24 h-24 rounded-full bg-gold-500/20 flex items-center justify-center mb-6 border-2 border-gold-500/50 overflow-hidden">
+                        {selectedAdvisor.image ? (
+                          <Image src={selectedAdvisor.image} alt={selectedAdvisor.name} width={96} height={96} className="object-cover w-full h-full" />
+                        ) : (
+                          <span className="font-display text-3xl font-bold text-gold-400">{selectedAdvisor.initial}</span>
+                        )}
+                      </div>
+                      <h3 className="font-display text-2xl font-bold text-white mb-1">{selectedAdvisor.name}</h3>
+                      <p className="text-gold-400 text-sm mb-4">{selectedAdvisor.role}</p>
+                      <div className="flex gap-2 mb-6">
+                        <span className="px-3 py-1 bg-white/10 rounded-full text-xs text-white/70">
+                          Experience: {selectedAdvisor.exp}
+                        </span>
+                        <span className="px-3 py-1 bg-white/10 rounded-full text-xs text-white/70">
+                          {selectedAdvisor.field}
+                        </span>
+                      </div>
+                      <p className="text-white/70 text-sm leading-relaxed max-w-md">
+                        {selectedAdvisor.bio}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </>
+          )}
+        </AnimatePresence>
       </section>
 
       {/* Company Overview */}
