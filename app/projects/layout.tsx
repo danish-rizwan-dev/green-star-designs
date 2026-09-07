@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     title: "Project Portfolio | Green Star Designs & Construction",
     description: "View our featured projects including Sayam Kunj Complex, Zakir Complex, Green Valley School, and more across Bihar and India.",
     url: "https://greenstardesign.in/projects",
-    images: [{ url: "/og-image.svg", width: 1200, height: 630, alt: "Green Star Designs & Construction" }],
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Green Star Designs & Construction" }],
   },
   alternates: {
     canonical: "https://greenstardesign.in/projects",

@@ -28,6 +28,11 @@ export const metadata: Metadata = {
   authors: [{ name: "Green Star Designs & Construction Pvt. Ltd." }],
   creator: "Green Star Designs & Construction Pvt. Ltd.",
   publisher: "Green Star Designs & Construction Pvt. Ltd.",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
   robots: "index, follow",
   openGraph: {
     type: "website",
@@ -37,7 +42,7 @@ export const metadata: Metadata = {
     title: "Green Star Designs & Construction | Architecture & Engineering, Bettiah Bihar",
     description: "Premium architecture, civil engineering & construction services in Bettiah, Bihar. Led by Er. Wasi Reza. Serving all India with architectural design, structural engineering & project supervision.",
     images: [{
-      url: "/og-image.svg",
+      url: "https://greenstardesign.in/og-image.jpg",
       width: 1200,
       height: 630,
       alt: "Green Star Designs & Construction — Architecture & Engineering",
@@ -47,7 +52,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Green Star Designs & Construction | Architecture & Engineering, Bettiah Bihar",
     description: "Architecture, civil engineering & construction services in Bettiah, Bihar. Led by Er. Wasi Reza.",
-    images: ["/og-image.svg"],
+    images: ["https://greenstardesign.in/og-image.jpg"],
   },
   alternates: {
     canonical: "https://greenstardesign.in",
