@@ -5,6 +5,19 @@ import { blogPosts } from "./posts";
 export default function BlogPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://greenstardesign.in" },
+              { "@type": "ListItem", position: 2, name: "Blog", item: "https://greenstardesign.in/blog" },
+            ],
+          }),
+        }}
+      />
       <section className="relative py-32 bg-navy-900">
         <div className="absolute inset-0 opacity-20">
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1920&q=80')] bg-cover bg-center" />

@@ -67,7 +67,7 @@ export default function Navigation() {
               <div className="relative w-12 h-12">
                 <Image
                   src="/logo.png"
-                  alt="Green Star Designs & Consultants"
+                  alt="Green Star Designs & Construction"
                   fill
                   sizes="48px"
                   className="object-contain"
@@ -78,7 +78,7 @@ export default function Navigation() {
                 <div className="font-display text-lg font-bold leading-tight text-primary-500 transition-colors">
                   Green Star
                 </div>
-                <p className="text-[9px] tracking-widest uppercase text-gold-600">Designs & Consultants</p>
+                <p className="text-[9px] tracking-widest uppercase text-gold-600">Designs & Construction</p>
                 <p className="text-[8px] tracking-widest uppercase text-gold-600">Pvt. Ltd.</p>
               </div>
             </Link>
@@ -158,7 +158,7 @@ export default function Navigation() {
                     </div>
                     <div>
                       <h3 className="font-display font-bold text-white text-lg">Green Star</h3>
-                      <p className="text-xs text-gold-400">Designs & Consultants</p>
+                      <p className="text-xs text-gold-400">Designs & Construction</p>
                     </div>
                   </div>
                 </div>

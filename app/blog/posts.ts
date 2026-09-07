@@ -38,7 +38,7 @@ Every region has building codes. In Bihar, structures must comply with NBC (Nati
 
 ## Our Approach at Green Star Designs
 
-At Green Star Designs & Consultants, our structural engineering team follows a rigorous process:
+At Green Star Designs & Construction, our structural engineering team follows a rigorous process:
 
 1. **Site Analysis** — Soil testing, load assessment, and environmental factors
 2. **Conceptual Design** — Selecting the right structural system for your project
@@ -115,7 +115,7 @@ An architect familiar with Bettiah and Bihar understands:
 
 Take your time. Meet with at least 2-3 firms. Compare not just their portfolios, but their approach to your project. The right architect will make you feel confident, informed, and excited about your project.
 
-At Green Star Designs & Consultants Pvt. Ltd., we offer free initial consultations to help you understand what's possible. Contact us to start your journey.
+At Green Star Designs & Construction Pvt. Ltd., we offer free initial consultations to help you understand what's possible. Contact us to start your journey.
     `,
     author: "Er. Razida",
     date: "2026-06-28",
@@ -177,7 +177,7 @@ Skipping professional site supervision to save money often backfires. Common con
 
 Professional site supervision typically costs 3-5% of the total project budget — a small price for ensuring your investment is built to last.
 
-At Green Star Designs & Consultants, our site supervision services have saved clients countless rupees in potential rework and repairs. Let us protect your investment.
+At Green Star Designs & Construction, our site supervision services have saved clients countless rupees in potential rework and repairs. Let us protect your investment.
     `,
     author: "Himanshu Poddar",
     date: "2026-06-15",
@@ -235,7 +235,7 @@ Our Sayam Kunj Complex in Bettiah is a perfect example. The residential complex 
 
 ## Work With Experts Who Understand Both
 
-At Green Star Designs & Consultants, our team combines deep knowledge of Vastu Shastra with modern architectural training. We don't compromise on either — delivering spaces that feel right and look stunning.
+At Green Star Designs & Construction, our team combines deep knowledge of Vastu Shastra with modern architectural training. We don't compromise on either — delivering spaces that feel right and look stunning.
 
 Contact us for a consultation on your Vastu-compliant dream project.
     `,
@@ -293,7 +293,7 @@ Our engineering team has prepared BOQs for projects ranging from individual home
 
 Always include a contingency of at least 5-10% in your budget. Construction is dynamic, and having a buffer ensures that unexpected changes don't derail your project.
 
-Need an accurate BOQ for your upcoming project? Get in touch with Green Star Designs & Consultants for a professional cost estimate.
+Need an accurate BOQ for your upcoming project? Get in touch with Green Star Designs & Construction for a professional cost estimate.
     `,
     author: "Er. Wasi Reza",
     date: "2026-05-20",

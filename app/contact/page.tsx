@@ -67,6 +67,19 @@ export default function ContactPage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://greenstardesign.in" },
+              { "@type": "ListItem", position: 2, name: "Contact", item: "https://greenstardesign.in/contact" },
+            ],
+          }),
+        }}
+      />
       {/* Hero Banner */}
       <section className="relative py-32 bg-navy-900">
         <div className="absolute inset-0 opacity-20">
@@ -247,7 +260,7 @@ export default function ContactPage() {
                 {/* Google Map */}
                 <div className="rounded-2xl overflow-hidden border border-white/10">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d790.1754631649876!2d84.50046684448634!3d26.816699297771326!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39936f39fba3e3d1%3A0xd21ffd8c976806f5!2sGREEN%20STAR%20DESIGNS%20%26%20CONSULTANTS%20PRIVATE%20LIMITED!5e1!3m2!1sen!2sus!4v1783710545411!5m2!1sen!2sus"
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d790.1754631649876!2d84.50046684448634!3d26.816699297771326!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39936f39fba3e3d1%3A0xd21ffd8c976806f5!2sGREEN%20STAR%20DESIGNS%20%26%20Construction%20PRIVATE%20LIMITED!5e1!3m2!1sen!2sus!4v1783710545411!5m2!1sen!2sus"
                     width="100%"
                     height="100%"
                     className="aspect-video w-full"
@@ -262,7 +275,7 @@ export default function ContactPage() {
                 {/* Quick CTAs */}
                 <div className="grid gap-4">
                   <a
-                    href="https://wa.me/917358331731"
+                    href={`https://wa.me/917358331731?text=${encodeURIComponent("Hi! I'm interested in your architecture and construction services. Could you share more details?")}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-4 bg-green-500/20 border border-green-500/30 rounded-xl p-6 

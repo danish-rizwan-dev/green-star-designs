@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "Expert insights on architecture, structural engineering, construction management, and design from Green Star Designs & Consultants. Learn about building in Bihar and across India.",
+  description: "Expert insights on architecture, structural engineering, construction management, and design from Green Star Designs & Construction. Learn about building in Bihar and across India.",
   openGraph: {
-    title: "Blog | Green Star Designs & Consultants",
+    title: "Blog | Green Star Designs & Construction",
     description: "Architecture, engineering, and construction insights from the team at Green Star Designs.",
     url: "https://greenstardesign.in/blog",
     images: [{ url: "/og-image.svg", width: 1200, height: 630, alt: "Green Star Designs Blog" }],

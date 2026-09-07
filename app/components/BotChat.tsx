@@ -9,7 +9,21 @@ interface Message {
   text: string;
 }
 
-async function getGeminiResponse(message: string): Promise<string> {
+interface ApiResponse {
+  reply: string;
+  options?: string[];
+}
+
+const DEFAULT_OPTIONS = [
+  "👥 Meet the Directors",
+  "👷 Core Engineering Team",
+  "💡 Board of Advisors",
+  "🏛️ Company Services",
+  "📞 Contact & Office Hours",
+  "💰 Quotation & Pricing",
+];
+
+async function getBotResponse(message: string): Promise<ApiResponse> {
   try {
     const res = await fetch("/api/chat", {
       method: "POST",
@@ -17,36 +31,54 @@ async function getGeminiResponse(message: string): Promise<string> {
       body: JSON.stringify({ message }),
     });
     const data = await res.json();
-    return data.reply;
+    return {
+      reply: data.reply || "I didn't receive a response. Please try again! 🤖",
+      options: data.options || DEFAULT_OPTIONS,
+    };
   } catch {
-    return "Oops! My circuits are glitching. Try again in a moment! 🤖⚡";
+    return {
+      reply: "Oops! My circuits are glitching. Try again in a moment! 🤖⚡",
+      options: DEFAULT_OPTIONS,
+    };
   }
 }
 
-export default function BotChat({ onClose, onTypingChange }: { onClose: () => void; onTypingChange?: (typing: boolean) => void }) {
+export default function BotChat({
+  onClose,
+  onTypingChange,
+}: {
+  onClose: () => void;
+  onTypingChange?: (typing: boolean) => void;
+}) {
   const [messages, setMessages] = useState<Message[]>([
-    { role: "bot", text: "Beep boop! You found me! 🤖 Ask me anything about Green Star Designs!" },
+    {
+      role: "bot",
+      text: "Beep boop! You found me! 🤖 Choose an option below or ask me anything about Green Star Designs!",
+    },
   ]);
+  const [options, setOptions] = useState<string[]>(DEFAULT_OPTIONS);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const endRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, isTyping]);
+  }, [messages, isTyping, options]);
 
-  const handleSend = async () => {
-    const text = input.trim();
-    if (!text) return;
-    setInput("");
-    setMessages((prev) => [...prev, { role: "user", text }]);
+  const sendMessage = async (textToSend: string) => {
+    if (!textToSend.trim() || isTyping) return;
+
+    // Add user message & show typing state
+    setMessages((prev) => [...prev, { role: "user", text: textToSend }]);
     setIsTyping(true);
     onTypingChange?.(true);
 
-    const reply = await getGeminiResponse(text);
+    const { reply, options: newOptions } = await getBotResponse(textToSend);
 
+    // Prepare empty bot message for typewriter effect
     let i = 0;
     setMessages((prev) => [...prev, { role: "bot", text: "" }]);
+
     const interval = setInterval(() => {
       i++;
       setMessages((prev) => {
@@ -54,12 +86,23 @@ export default function BotChat({ onClose, onTypingChange }: { onClose: () => vo
         copy[copy.length - 1] = { role: "bot", text: reply.slice(0, i) };
         return copy;
       });
+
       if (i >= reply.length) {
         clearInterval(interval);
         setIsTyping(false);
         onTypingChange?.(false);
+        if (newOptions && newOptions.length > 0) {
+          setOptions(newOptions);
+        }
       }
-    }, 8);
+    }, 4);
+  };
+
+  const handleInputSend = () => {
+    const text = input.trim();
+    if (!text) return;
+    setInput("");
+    sendMessage(text);
   };
 
   return (
@@ -67,7 +110,7 @@ export default function BotChat({ onClose, onTypingChange }: { onClose: () => vo
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-navy-900/60 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-end justify-end p-4 sm:p-6 bg-navy-900/60 backdrop-blur-sm"
       onClick={onClose}
     >
       <motion.div
@@ -76,7 +119,7 @@ export default function BotChat({ onClose, onTypingChange }: { onClose: () => vo
         exit={{ opacity: 0, y: 50, scale: 0.95 }}
         transition={{ type: "spring", damping: 25, stiffness: 300 }}
         onClick={(e) => e.stopPropagation()}
-        className="bg-white rounded-t-2xl sm:rounded-2xl shadow-2xl w-full sm:w-[400px] sm:max-h-[600px] h-[70vh] sm:h-auto flex flex-col overflow-hidden"
+        className="bg-white rounded-t-2xl sm:rounded-2xl shadow-2xl w-full sm:w-[400px] sm:max-h-[650px] h-[80vh] sm:h-auto flex flex-col overflow-hidden"
       >
         {/* Header */}
         <div className="bg-gradient-to-r from-navy-800 to-navy-700 p-4 flex items-center justify-between">
@@ -100,7 +143,7 @@ export default function BotChat({ onClose, onTypingChange }: { onClose: () => vo
           </button>
         </div>
 
-        {/* Messages */}
+        {/* Messages Body */}
         <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-slate-50/50">
           {messages.map((msg, i) => (
             <motion.div
@@ -110,7 +153,7 @@ export default function BotChat({ onClose, onTypingChange }: { onClose: () => vo
               className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
             >
               <div
-                className={`max-w-[80%] px-3.5 py-2.5 rounded-2xl text-sm leading-relaxed ${
+                className={`max-w-[85%] px-3.5 py-2.5 rounded-2xl text-sm leading-relaxed whitespace-pre-line ${
                   msg.role === "user"
                     ? "bg-primary-500 text-white rounded-br-md"
                     : "bg-white text-navy-900 rounded-bl-md shadow-sm border border-slate-100"
@@ -140,19 +183,37 @@ export default function BotChat({ onClose, onTypingChange }: { onClose: () => vo
           <div ref={endRef} />
         </div>
 
-        {/* Input */}
+        {/* Interactive Option Chips */}
+        <div className="p-2 bg-slate-100/60 border-t border-slate-100">
+          <p className="text-[11px] font-medium text-slate-400 px-2 mb-1.5">Select an option:</p>
+          <div className="flex flex-wrap gap-1.5 max-h-28 overflow-y-auto px-1">
+            {options.map((option, idx) => (
+              <button
+                key={idx}
+                onClick={() => sendMessage(option)}
+                disabled={isTyping}
+                className="text-xs bg-white text-navy-800 hover:bg-gold-500 hover:text-navy-900 border border-slate-200 px-3 py-1.5 rounded-full transition-all font-medium disabled:opacity-50 shadow-sm shrink-0 cursor-pointer"
+              >
+                {option}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Text Input Footer */}
         <div className="p-3 border-t border-slate-100 bg-white">
           <div className="flex gap-2">
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && handleSend()}
+              onKeyDown={(e) => e.key === "Enter" && handleInputSend()}
               placeholder="Ask me something..."
-              className="flex-1 px-4 py-2.5 border border-slate-200 rounded-xl text-sm text-navy-900 placeholder-slate-400 focus:outline-none focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 transition-all"
+              disabled={isTyping}
+              className="flex-1 px-4 py-2.5 border border-slate-200 rounded-xl text-sm text-navy-900 placeholder-slate-400 focus:outline-none focus:border-gold-500 focus:ring-2 focus:ring-gold-500/20 transition-all disabled:bg-slate-50"
             />
             <button
-              onClick={handleSend}
-              disabled={!input.trim()}
+              onClick={handleInputSend}
+              disabled={!input.trim() || isTyping}
               className="w-10 h-10 rounded-xl bg-gold-500 text-navy-900 flex items-center justify-center hover:bg-gold-400 transition-all disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
             >
               <Send size={16} />

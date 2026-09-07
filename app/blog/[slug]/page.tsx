@@ -34,6 +34,49 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Article",
+                headline: post.title,
+                description: post.excerpt,
+                image: post.image,
+                author: {
+                  "@type": "Person",
+                  name: post.author,
+                },
+                publisher: {
+                  "@type": "Organization",
+                  name: "Green Star Designs & Construction Pvt. Ltd.",
+                  logo: {
+                    "@type": "ImageObject",
+                    url: "https://greenstardesign.in/logo.png",
+                  },
+                },
+                datePublished: post.date,
+                dateModified: post.date,
+                mainEntityOfPage: {
+                  "@type": "WebPage",
+                  "@id": `https://greenstardesign.in/blog/${post.slug}`,
+                },
+                keywords: post.tags.join(", "),
+              },
+              {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  { "@type": "ListItem", position: 1, name: "Home", item: "https://greenstardesign.in" },
+                  { "@type": "ListItem", position: 2, name: "Blog", item: "https://greenstardesign.in/blog" },
+                  { "@type": "ListItem", position: 3, name: post.title },
+                ],
+              },
+            ],
+          }),
+        }}
+      />
       <article>
         <section className="relative py-32 bg-navy-900">
           <div className="absolute inset-0">

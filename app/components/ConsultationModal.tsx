@@ -23,12 +23,25 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const text = `*New Consultation Request*
-*Name:* ${formData.name}
-*Email:* ${formData.email}
-*Phone:* ${formData.phone}
-*Project Type:* ${formData.projectType || "Not specified"}
-*Message:* ${formData.message}`;
+    const projectName = formData.projectType || "Not specified";
+    const text = [
+      "🏗️ *Green Star Designs & Construction*",
+      "━━━━━━━━━━━━━━━━━━━━",
+      "",
+      "📋 *New Consultation Request*",
+      "",
+      `👤 *Name:* ${formData.name}`,
+      `📧 *Email:* ${formData.email}`,
+      `📞 *Phone:* ${formData.phone}`,
+      `🏠 *Project Type:* ${projectName}`,
+      "",
+      `💬 *Message:*`,
+      `${formData.message}`,
+      "",
+      "━━━━━━━━━━━━━━━━━━━━",
+      "🌐 www.greenstardesign.in",
+      "📍 Bettiah, Bihar | Serving All India",
+    ].join("\n");
 
     const url = `https://wa.me/${PHONE}?text=${encodeURIComponent(text)}`;
     window.open(url, "_blank");

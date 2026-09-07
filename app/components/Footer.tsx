@@ -48,7 +48,7 @@ export default function Footer() {
               </div>
               <div>
                 <h3 className="font-display font-bold text-lg text-white">GREEN STAR</h3>
-                <p className="text-[10px] text-gold-500 tracking-wider uppercase">Designs & Consultants</p>
+                <p className="text-[10px] text-gold-500 tracking-wider uppercase">Designs & Construction</p>
               </div>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
@@ -169,7 +169,7 @@ export default function Footer() {
         <div className="section-padding py-6">
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-slate-500 text-sm text-center md:text-left">
-              © 2026 Green Star Designs & Consultants Pvt. Ltd. All rights reserved.
+              © 2026 Green Star Designs & Construction Pvt. Ltd. All rights reserved.
             </p>
             <p className="text-slate-500 text-sm">
               Designed with excellence. Built with trust.

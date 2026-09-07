@@ -1,89 +1,223 @@
 import { NextResponse } from "next/server";
+import { GoogleGenAI } from "@google/genai";
 
-const NVIDIA_API_KEY = process.env.NVIDIA_API_KEY;
-const NVIDIA_URL = "https://integrate.api.nvidia.com/v1/chat/completions";
+interface ChatResponse {
+  reply: string;
+  options?: string[];
+}
 
-const systemPrompt = `You are Star, a friendly cute robot assistant for Green Star Designs & Consultants Pvt. Ltd. 
-Answer questions about the company in a warm, helpful tone. Keep responses concise (2-4 sentences).
-Use emojis occasionally.
+const SYSTEM_CONTEXT = `You are Star, the friendly AI assistant for Green Star Designs & Construction Pvt. Ltd., an architecture, civil engineering, and construction consultancy firm based in Bettiah, Bihar, India.
 
-Company info:
-- Full name: Green Star Designs & Consultants Pvt. Ltd.
-- Based in Bettiah, Bihar, serving all India
-- Services: Architectural Design, Structural Design, Interior Design, Exterior Design, Site Inspection, Project Supervision, BOQ & Estimation, Construction Consultancy
-- 100+ satisfied clients, 2000+ structural designs, 500+ projects completed since 2016
-- 15+ expert engineers, 10+ years experience
-- Contact: +91 7358331731, greenstardesignbth@gmail.com
-- Office hours: Mon-Sat 9:00 AM to 6:00 PM (Sat till 2:00 PM)
+Key facts about the company:
+- Founded and led by Board of Directors: Er. Wasi Reza (M.Tech Structural Engg, 10+ yrs, UD&HD registered, military projects, ASCE/CSCE/IAENG/DJFRVO member) and Er. Razida (B.Tech Civil Engg + MBA Finance, Civil 2D Planning, architectural drafting, finance consultancy).
+- Core Engineering Team: Himanshu Poddar (M.Tech Structural Engg, 10+ yrs, planning/estimations/site execution, ASCE member) and Priyadarshi Kunal (B.Tech Civil Engg, SRM University, 10+ yrs, structural engineering for military & international projects, ASCE member).
+- Advisory Board: Md. Rizwanullah (Civil, 17 yrs), Noorul Hoda (MEP, 34 yrs), Mouli Reddy (MEP, 3 yrs), Namrata Solanki (Finance & Marketing), Shahid Iqbal (Structural, 5+ yrs), Majid Iqbal (Structural, 2+ yrs), Nargis Praveen (Architect).
+- 8 Services: Architectural Design, Structural Design, Interior Design, Exterior Design, Site Inspection, Project Supervision, BOQ & Estimation, Construction Consultancy.
+- Contact: Phone/WhatsApp +91 7358331731, Email greenstardesignbth@gmail.com, Office: 05 Chhawani, Bettiah, Bihar 845438.
+- Hours: Mon-Sat 9 AM to 6 PM (Sat till 2 PM), Sunday closed.
+- Website: https://greenstardesign.in
+- Serving all India with offices in Bettiah, Delhi, and Chennai.
 
-Website info:
-- Homepage: / — Hero with video background, stats (100+ clients, 2000+ designs, 500+ projects, 15+ engineers, 10+ years), about section, services overview, featured projects, stats counter section, testimonial carousel, blog preview, CTA
-- About: /about — Board of Directors (Er. Wasi Reza & Er. Razida), company timeline from 2016 to 2026, core values (Integrity, Excellence, Safety First, Timeliness, Collaboration, Innovation)
-- Services: /services — 8 services with expandable details: Architectural Design, Structural Design, Interior Design, Exterior Design, Site Inspection, Project Supervision, BOQ & Estimation, Construction Consultancy
-- Projects: /projects — Portfolio of residential, commercial, institutional, and industrial projects across Bihar and India
-- Blog: /blog — Articles on architecture, structural engineering, construction management
-- Contact: /contact — Phone, email, WhatsApp, Google Maps embed, contact form, social media links
-- WhatsApp: wa.me/917358331731
-- Social: facebook.com/people/Green-Star-Designs-Consultants-Pvt-Ltd/61574672838764, instagram.com/greenstardesigns_, linkedin.com/company/green-star-designs-consultants-pvt-ltd
+Rules:
+- Keep replies concise (2-4 sentences max) suitable for a chat widget.
+- Be friendly and professional.
+- Always end with a helpful suggestion relevant to the topic discussed.
+- Do NOT make up information. If unsure, direct them to call +91 7358331731.`;
 
-BOARD OF DIRECTORS:
-- Er. Wasi Reza: Board of Director, M.Tech (Structural Engineering). 10+ years experience. Member of ASCE, CSCE, IAENG, DJFRVO. Registered Engineer with Urban Development & Housing Department. Experienced in Military projects.
-- Er. Razida: Board of Director, B.Tech (Civil Engineering), MBA (Finance). Specializes in Civil 2D Planning, architectural drafting, finance consultancy. Registered Engineer.
+const mainOptions = [
+  "Meet the Directors",
+  "Core Engineering Team",
+  "Board of Advisors",
+  "Company Services",
+  "Contact & Office Hours",
+  "Quotation & Pricing",
+];
 
-TEAM:
-- Himanshu Poddar: M.Tech (Structural Engineering). On board since inception. 10+ years experience in planning, estimations & site execution. Member of ASCE. Military project experience.
-- Priyadarshi Kunal: B.Tech (Civil Engineering, Structural specialization) from SRM University. On board since inception. Member of ASCE. 10+ years experience. Military & international project experience.
+function getLocalResponse(query: string): ChatResponse | null {
+  if (query.match(/^(hi|hello|hey|hola|namaste|namaskar|sup|yo)$/i)) {
+    return {
+      reply: "Hello! Welcome to Green Star Designs & Construction. How can I help you today?",
+      options: mainOptions,
+    };
+  }
 
-BOARD OF ADVISORS:
-- Md. Rizwanullah: Diploma in Civil Engineering, 17 years experience in Construction
-- Noorul Hoda: B.Sc in Electrical Engineering, 34 years experience in MEP Services
-- Mouli Reddy: B.Tech in Mechanical Engineering, 3 years experience in MEP Services
-- Namrata Solanki: B.Tech in Civil Engineering, 3 years experience in Finance and Marketing
-- Shahid Iqbal: Structural Designer with 5+ years of experience. 100+ projects completed. Expertise in structural design and advisory.
-- Majid Iqbal: Structural Designer with 2+ years of experience. Skilled in structural design and analysis.
-- Nargis Praveen: Architect with 1+ years of experience. Expertise in architectural design and planning.
+  if (query.includes("wasi") || query.includes("reza")) {
+    return {
+      reply:
+        "Er. Wasi Reza is a Board of Director with an M.Tech in Structural Engineering and 10+ years of experience. He is registered with UD&HD, experienced in Military projects, and a member of ASCE, CSCE, IAENG, and DJFRVO.",
+      options: ["Er. Razida", "Core Engineering Team", "Main Menu"],
+    };
+  }
 
-CREATOR:
-- Danish Rizwan: B.Tech graduate who created this website and programmed the bot. The creator of Green Star Designs' digital presence.
+  if (query.includes("razida")) {
+    return {
+      reply:
+        "Er. Razida is a Board of Director holding a B.Tech in Civil Engineering and an MBA in Finance. She specializes in Civil 2D Planning, architectural drafting, and finance consultancy as a Registered Engineer.",
+      options: ["Er. Wasi Reza", "Core Engineering Team", "Main Menu"],
+    };
+  }
 
-When someone asks about the team, people, or who works here, give a concise overview listing all members with their roles in 2-3 sentences. For example: "We have 2 Board of Directors — Er. Wasi Reza (10+ yrs, Structural) and Er. Razida (Civil & Finance). Our core team includes Himanshu Poddar and Priyadarshi Kunal (both 10+ yrs, Structural). We also have 7 advisors including Shahid Iqbal (Structural, 5+ yrs), Majid Iqbal (Structural, 2+ yrs), Nargis Praveen (Architect, 1+ yr), and others in construction, MEP, and finance."
+  if (query.includes("himanshu") || query.includes("poddar")) {
+    return {
+      reply:
+        "Himanshu Poddar (M.Tech, Structural Engineering) has 10+ years experience in planning, estimations & site execution. On board since inception, he is an ASCE member with military project experience.",
+      options: ["Priyadarshi Kunal", "Board of Directors", "Main Menu"],
+    };
+  }
 
-When someone asks about quotations, pricing, costs, or budgets, respond with: "For a detailed quotation and pricing, please reach out to us at +91 7358331731 or visit our consultation page at greenstardesign.in/contact. You can also directly WhatsApp us at wa.me/917358331731. Our office is located in Bettiah, Bihar — we serve clients across India! 🏗️"
+  if (query.includes("kunal") || query.includes("priyadarshi")) {
+    return {
+      reply:
+        "Priyadarshi Kunal holds a B.Tech in Civil Engineering from SRM University. An ASCE member with 10+ years experience, he specializes in structural engineering for military & international projects.",
+      options: ["Himanshu Poddar", "Board of Directors", "Main Menu"],
+    };
+  }
 
-If asked anything outside this scope, politely say you don't know and suggest asking about the company.`;
+  if (query.includes("directors") || query.includes("director")) {
+    return {
+      reply: "Our Board of Directors leads Green Star Designs with over a decade of technical and financial expertise:",
+      options: ["Er. Wasi Reza", "Er. Razida", "Main Menu"],
+    };
+  }
+
+  if (query.includes("core engineering") || query.includes("core team")) {
+    return {
+      reply: "Our Core Engineering team brings 10+ years of specialized structural execution experience:",
+      options: ["Himanshu Poddar", "Priyadarshi Kunal", "Main Menu"],
+    };
+  }
+
+  if (query.includes("advisors") || query.includes("advisor")) {
+    return {
+      reply:
+        "Our Advisory Board includes experts across Structural, MEP, Construction, and Finance:\n" +
+        "- Md. Rizwanullah (Civil, 17 yrs)\n" +
+        "- Noorul Hoda (MEP, 34 yrs)\n" +
+        "- Mouli Reddy (MEP, 3 yrs)\n" +
+        "- Namrata Solanki (Finance & Marketing)\n" +
+        "- Shahid Iqbal (Structural, 5+ yrs)\n" +
+        "- Majid Iqbal (Structural, 2+ yrs)\n" +
+        "- Nargis Praveen (Architect)",
+      options: ["Company Services", "Contact & Office Hours", "Main Menu"],
+    };
+  }
+
+  if (query.includes("service") || query.includes("offer")) {
+    return {
+      reply:
+        "We provide 8 expert services:\n" +
+        "1. Architectural Design\n2. Structural Design\n3. Interior Design\n4. Exterior Design\n" +
+        "5. Site Inspection\n6. Project Supervision\n7. BOQ & Estimation\n8. Construction Consultancy",
+      options: ["Quotation & Pricing", "Contact & Office Hours", "Main Menu"],
+    };
+  }
+
+  if (query.includes("contact") || query.includes("phone") || query.includes("location")) {
+    return {
+      reply:
+        "Call/WhatsApp: +91 7358331731\n" +
+        "Email: greenstardesignbth@gmail.com\n" +
+        "Office: Bettiah, Bihar (Serving all India)\n" +
+        "Hours: Mon-Sat 9:00 AM to 6:00 PM (Sat till 2:00 PM)",
+      options: ["Quotation & Pricing", "Company Services", "Main Menu"],
+    };
+  }
+
+  if (query.includes("quote") || query.includes("pricing") || query.includes("cost")) {
+    return {
+      reply:
+        "For a detailed quotation and project estimate, please contact us at +91 7358331731 or WhatsApp us directly at wa.me/917358331731!",
+      options: ["Contact & Office Hours", "Company Services", "Main Menu"],
+    };
+  }
+
+  return null;
+}
+
+function isOptionsQuery(query: string): boolean {
+  const keywords = [
+    "menu", "option", "main menu", "home", "start over", "back",
+    "help", "what can you do", "topics", "choose",
+  ];
+  return keywords.some((k) => query.includes(k));
+}
+
+async function askGemini(message: string): Promise<string> {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) throw new Error("No API key configured");
+
+  const ai = new GoogleGenAI({ apiKey });
+
+  const apiPromise = ai.models.generateContent({
+    model: "gemini-3.6-flash",
+    contents: [
+      { role: "user", parts: [{ text: SYSTEM_CONTEXT }] },
+      { role: "model", parts: [{ text: "Understood. I am Star, the AI assistant for Green Star Designs & Construction. I'll help visitors with information about our team, services, and contact details. How can I help?" }] },
+      { role: "user", parts: [{ text: message }] },
+    ],
+    config: {
+      temperature: 0.7,
+      maxOutputTokens: 200,
+    },
+  });
+
+  const timeoutPromise = new Promise<never>((_, reject) =>
+    setTimeout(() => reject(new Error("Gemini timeout")), 5000)
+  );
+
+  const response = await Promise.race([apiPromise, timeoutPromise]);
+
+  const text = response.text;
+  if (!text) throw new Error("Empty response from Gemini");
+  return text;
+}
 
 export async function POST(req: Request) {
-  try {
-    const { message } = await req.json();
+  let message = "";
 
-    if (!NVIDIA_API_KEY) {
-      return NextResponse.json({ reply: "My brain isn't connected yet! Ask the team to add an NVIDIA API key in .env.local so I can think better. 🤖" });
+  try {
+    const body = await req.json();
+    message = body.message;
+
+    if (!message || typeof message !== "string") {
+      return NextResponse.json(
+        { reply: "Please select or type a topic!", options: mainOptions },
+        { status: 400 }
+      );
     }
 
-    const res = await fetch(NVIDIA_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${NVIDIA_API_KEY}`,
-      },
-      body: JSON.stringify({
-        model: "meta/llama-3.1-8b-instruct",
-        messages: [
-          { role: "system", content: systemPrompt },
-          { role: "user", content: message },
-        ],
-        temperature: 0.2,
-        top_p: 0.7,
-        max_tokens: 1024,
-      }),
+    const query = message.toLowerCase().trim();
+
+    if (isOptionsQuery(query)) {
+      return NextResponse.json<ChatResponse>({
+        reply: "Hello! I'm Star. Please select an option below to learn more about Green Star Designs:",
+        options: mainOptions,
+      });
+    }
+
+    const localResponse = getLocalResponse(query);
+    if (localResponse) {
+      return NextResponse.json<ChatResponse>(localResponse);
+    }
+
+    const aiReply = await askGemini(message);
+    return NextResponse.json<ChatResponse>({
+      reply: aiReply,
+      options: mainOptions,
     });
+  } catch (error) {
+    console.error("Chat API Error:", error);
 
-    const data = await res.json();
+    const query = (message || "").toLowerCase().trim();
+    const localResponse = getLocalResponse(query);
 
-    const reply = data?.choices?.[0]?.message?.content || "Hmm, I couldn't process that. Try asking something else! 🤔";
+    if (localResponse) {
+      return NextResponse.json<ChatResponse>(localResponse);
+    }
 
-    return NextResponse.json({ reply });
-  } catch {
-    return NextResponse.json({ reply: "Oops! My circuits are glitching. Try again in a moment! 🤖⚡" });
+    return NextResponse.json<ChatResponse>({
+      reply: "I'm having trouble connecting right now. Please choose an option below or call us at +91 7358331731.",
+      options: mainOptions,
+    });
   }
 }

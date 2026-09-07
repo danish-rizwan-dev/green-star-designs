@@ -39,7 +39,66 @@ export default function AboutPage() {
 
   return (
     <>
-
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Person",
+                "@id": "https://greenstardesign.in/about#wasireza",
+                name: "Er. Wasi Reza",
+                url: "https://greenstardesign.in/about",
+                image: "https://greenstardesign.in/wasi-reza.jpg",
+                jobTitle: "Board of Director",
+                description: "Er. Wasi Reza is a Board of Director at Green Star Designs & Construction Pvt. Ltd. with M.Tech in Structural Engineering and 10+ years of experience in planning, designing, and execution.",
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "Bettiah",
+                  addressRegion: "Bihar",
+                  addressCountry: "IN",
+                },
+                sameAs: [
+                  "https://www.linkedin.com/in/er-wasi-reza-888a1244/",
+                ],
+                worksFor: {
+                  "@type": "Organization",
+                  name: "Green Star Designs & Construction Pvt. Ltd.",
+                  url: "https://greenstardesign.in",
+                },
+                hasCredential: [
+                  "Registered Engineer — Urban Development & Housing Department",
+                  "Sr. Affiliated Member of ASCE America",
+                  "CSCE (Canada)",
+                  "IAENG (Hong Kong)",
+                  "DJFRVO (India)",
+                ],
+              },
+              {
+                "@type": "Person",
+                name: "Er. Razida",
+                url: "https://greenstardesign.in/about",
+                image: "https://greenstardesign.in/erRazida.png",
+                jobTitle: "Board of Director",
+                description: "Er. Razida is a Board of Director at Green Star Designs & Construction Pvt. Ltd. specializing in Civil 2D Planning, architectural drafting, and finance-related consultancy.",
+                worksFor: {
+                  "@type": "Organization",
+                  name: "Green Star Designs & Construction Pvt. Ltd.",
+                  url: "https://greenstardesign.in",
+                },
+              },
+              {
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  { "@type": "ListItem", position: 1, name: "Home", item: "https://greenstardesign.in" },
+                  { "@type": "ListItem", position: 2, name: "About", item: "https://greenstardesign.in/about" },
+                ],
+              },
+            ],
+          }),
+        }}
+      />
 
       {/* Board of Director */}
       <section className="py-24 relative overflow-hidden">
@@ -58,7 +117,7 @@ export default function AboutPage() {
         <div className="relative z-10 section-padding max-w-7xl mx-auto">
           <SectionHeader
             title="Board of Director"
-            subtitle="Meet the leadership team behind Green Star Designs & Consultants Pvt. Ltd."
+            subtitle="Meet the leadership team behind Green Star Designs & Construction Pvt. Ltd."
           />
 
           {/* Er. Wasi Reza */}
@@ -468,7 +527,7 @@ export default function AboutPage() {
                 <div className="relative rounded-2xl overflow-hidden aspect-square">
                   <Image
                     src="/newlogo.png"
-                    alt="Green Star Designs & Consultants"
+                    alt="Green Star Designs & Construction"
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="object-contain p-8"
@@ -484,7 +543,7 @@ export default function AboutPage() {
                 Who We Are
               </h2>
               <p className="text-slate-600 text-lg leading-relaxed mb-6">
-                Green Star Designs & Consultants Pvt. Ltd. is a full-service architecture and engineering 
+                Green Star Designs & Construction Pvt. Ltd. is a full-service architecture and engineering 
                 consultancy headquartered in Bettiah, Bihar. Founded in 2016, we have grown from a small 
                 local practice to a trusted name serving clients across India.
               </p>
