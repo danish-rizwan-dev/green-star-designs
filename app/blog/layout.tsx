@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     title: "Blog | Green Star Designs & Construction",
     description: "Architecture, engineering, and construction insights from the team at Green Star Designs.",
     url: "https://greenstardesign.in/blog",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Green Star Designs Blog" }],
+    images: [{ url: "https://greenstardesign.in/logo.png", width: 1254, height: 1254, alt: "Green Star Designs Blog" }],
   },
   alternates: {
     canonical: "https://greenstardesign.in/blog",

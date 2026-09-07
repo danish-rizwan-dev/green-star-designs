@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     title: "Contact Green Star Designs & Construction | Free Consultation",
     description: "Get in touch with our team for architecture, engineering, and construction consultancy services. Office at Bettiah, Bihar.",
     url: "https://greenstardesign.in/contact",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Green Star Designs & Construction" }],
+    images: [{ url: "https://greenstardesign.in/logo.png", width: 1254, height: 1254, alt: "Green Star Designs & Construction" }],
   },
   alternates: {
     canonical: "https://greenstardesign.in/contact",

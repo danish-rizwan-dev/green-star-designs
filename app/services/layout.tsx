@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     title: "Architecture & Engineering Services | Green Star Designs",
     description: "From architectural design to construction consultancy — we offer end-to-end services for residential, commercial, and institutional projects.",
     url: "https://greenstardesign.in/services",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Green Star Designs & Construction" }],
+    images: [{ url: "https://greenstardesign.in/logo.png", width: 1254, height: 1254, alt: "Green Star Designs & Construction" }],
   },
   alternates: {
     canonical: "https://greenstardesign.in/services",

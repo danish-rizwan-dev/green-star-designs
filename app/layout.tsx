@@ -42,9 +42,9 @@ export const metadata: Metadata = {
     title: "Green Star Designs & Construction | Architecture & Engineering, Bettiah Bihar",
     description: "Premium architecture, civil engineering & construction services in Bettiah, Bihar. Led by Er. Wasi Reza. Serving all India with architectural design, structural engineering & project supervision.",
     images: [{
-      url: "https://greenstardesign.in/og-image.jpg",
-      width: 1200,
-      height: 630,
+      url: "https://greenstardesign.in/logo.png",
+      width: 1254,
+      height: 1254,
       alt: "Green Star Designs & Construction — Architecture & Engineering",
     }],
   },
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Green Star Designs & Construction | Architecture & Engineering, Bettiah Bihar",
     description: "Architecture, civil engineering & construction services in Bettiah, Bihar. Led by Er. Wasi Reza.",
-    images: ["https://greenstardesign.in/og-image.jpg"],
+    images: ["https://greenstardesign.in/logo.png"],
   },
   alternates: {
     canonical: "https://greenstardesign.in",
