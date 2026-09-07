@@ -29,8 +29,8 @@ export const metadata: Metadata = {
   creator: "Green Star Designs & Construction Pvt. Ltd.",
   publisher: "Green Star Designs & Construction Pvt. Ltd.",
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
     apple: "/apple-touch-icon.png",
   },
   robots: "index, follow",
