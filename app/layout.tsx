@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     default: "Green Star Designs & Construction | Architecture & Engineering, Bettiah Bihar",
     template: "%s | Green Star Designs & Construction",
   },
-  description: "Green Star Designs & Construction Pvt. Ltd. — top architecture, civil engineering & construction firm in Bettiah, Bihar. Led by Er. Wasi Reza. Premium architectural design, structural engineering, site supervision, BOQ estimation, interior & exterior design across India.",
+  description: "Green Star Designs & Construction  — top architecture, civil engineering & construction firm in Bettiah, Bihar. Led by Er. Wasi Reza. Premium architectural design, structural engineering, site supervision, BOQ estimation, interior & exterior design across India.",
   keywords: [
     "Green Star Designs", "Green Star Designs Construction", "Green Star Designs & Construction",
     "Wasi Reza", "Er Wasi Reza", "Wasi Reza architect", "Wasi Reza engineer",
@@ -25,9 +25,9 @@ export const metadata: Metadata = {
     "Green Star Designs Bettiah", "Green Star Designs Bihar",
     "architecture Bettiah Bihar", "engineering consultancy Bihar"
   ],
-  authors: [{ name: "Green Star Designs & Construction Pvt. Ltd." }],
-  creator: "Green Star Designs & Construction Pvt. Ltd.",
-  publisher: "Green Star Designs & Construction Pvt. Ltd.",
+  authors: [{ name: "Green Star Designs & Construction " }],
+  creator: "Green Star Designs & Construction ",
+  publisher: "Green Star Designs & Construction ",
   icons: {
     icon: "/favicon.png",
     shortcut: "/favicon.png",
@@ -85,7 +85,7 @@ export default function RootLayout({
                 {
                   "@type": "Organization",
                   "@id": "https://greenstardesign.in/#organization",
-                  name: "Green Star Designs & Construction Pvt. Ltd.",
+                  name: "Green Star Designs & Construction ",
                   url: "https://greenstardesign.in",
                   logo: "https://greenstardesign.in/logo.png",
                   description: "Premium architecture, civil engineering, structural design, and construction services. Led by Er. Wasi Reza.",
@@ -120,7 +120,7 @@ export default function RootLayout({
                 {
                   "@type": "ProfessionalService",
                   "@id": "https://greenstardesign.in/#service",
-                  name: "Green Star Designs & Construction Pvt. Ltd.",
+                  name: "Green Star Designs & Construction ",
                   url: "https://greenstardesign.in",
                   description: "Architecture, civil engineering, structural design, construction, site inspection, project supervision, interior design, exterior design, BOQ estimation.",
                   areaServed: "India",
@@ -142,7 +142,7 @@ export default function RootLayout({
                 {
                   "@type": "LocalBusiness",
                   "@id": "https://greenstardesign.in/#business",
-                  name: "Green Star Designs & Construction Pvt. Ltd.",
+                  name: "Green Star Designs & Construction ",
                   image: "https://greenstardesign.in/logo.png",
                   url: "https://greenstardesign.in",
                   telephone: "+91-7358331731",
@@ -173,7 +173,7 @@ export default function RootLayout({
                   name: "Er. Wasi Reza",
                   url: "https://greenstardesign.in/about",
                   jobTitle: "Board of Director — Green Star Designs & Construction",
-                  description: "Er. Wasi Reza is a Board of Director at Green Star Designs & Construction Pvt. Ltd. with M.Tech in Structural Engineering and 10+ years of experience. Registered with UD&HD, experienced in Military projects, and member of ASCE, CSCE, IAENG, and DJFRVO.",
+                  description: "Er. Wasi Reza is a Board of Director at Green Star Designs & Construction  with M.Tech in Structural Engineering and 10+ years of experience. Registered with UD&HD, experienced in Military projects, and member of ASCE, CSCE, IAENG, and DJFRVO.",
                   address: {
                     "@type": "PostalAddress",
                     addressLocality: "Bettiah",
@@ -185,7 +185,7 @@ export default function RootLayout({
                   ],
                   worksFor: {
                     "@type": "Organization",
-                    name: "Green Star Designs & Construction Pvt. Ltd.",
+                    name: "Green Star Designs & Construction ",
                     url: "https://greenstardesign.in",
                   },
                   alumniOf: [

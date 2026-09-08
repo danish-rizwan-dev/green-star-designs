@@ -204,7 +204,7 @@ function AboutSection() {
               Building Excellence Since Day One
             </h2>
             <p className="text-slate-600 text-lg leading-relaxed mb-6">
-              Green Star Designs & Construction Pvt. Ltd. is a premier architecture and engineering consultancy 
+              Green Star Designs & Construction  is a premier architecture and engineering consultancy 
               firm based in Bettiah, Bihar. We specialize in transforming visionary concepts into meticulously 
               crafted structures that stand the test of time.
             </p>
@@ -551,7 +551,7 @@ function TestimonialsSection() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            name: "Green Star Designs & Construction Pvt. Ltd.",
+            name: "Green Star Designs & Construction ",
             aggregateRating: {
               "@type": "AggregateRating",
               ratingValue: "5",
@@ -638,7 +638,7 @@ function PillarsSection() {
             GREEN STAR DESIGNS
           </h2>
           <p className="text-gold-500 font-semibold text-lg mb-12">
-            &amp; Construction PVT. LTD.
+            &amp; Construction 
           </p>
         </ScrollReveal>
 

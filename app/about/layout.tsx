@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: "Learn about Green Star Designs & Construction Pvt. Ltd. — a premier architecture and engineering consultancy based in Bettiah, Bihar. Meet our team of 15+ expert engineers led by Er. Wasi Reza and Er. Razida.",
+  description: "Learn about Green Star Designs & Construction  — a premier architecture and engineering consultancy based in Bettiah, Bihar. Meet our team of 15+ expert engineers led by Er. Wasi Reza and Er. Razida.",
   openGraph: {
     title: "About Green Star Designs & Construction | Architecture & Engineering",
     description: "Meet the leadership team behind Green Star Designs. Board of Directors, advisors, and our journey since 2016.",

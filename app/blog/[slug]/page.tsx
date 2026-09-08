@@ -51,7 +51,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 },
                 publisher: {
                   "@type": "Organization",
-                  name: "Green Star Designs & Construction Pvt. Ltd.",
+                  name: "Green Star Designs & Construction ",
                   logo: {
                     "@type": "ImageObject",
                     url: "https://greenstardesign.in/logo.png",

@@ -115,7 +115,7 @@ An architect familiar with Bettiah and Bihar understands:
 
 Take your time. Meet with at least 2-3 firms. Compare not just their portfolios, but their approach to your project. The right architect will make you feel confident, informed, and excited about your project.
 
-At Green Star Designs & Construction Pvt. Ltd., we offer free initial consultations to help you understand what's possible. Contact us to start your journey.
+At Green Star Designs & Construction , we offer free initial consultations to help you understand what's possible. Contact us to start your journey.
     `,
     author: "Er. Razida",
     date: "2026-06-28",

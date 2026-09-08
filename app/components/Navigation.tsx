@@ -79,7 +79,7 @@ export default function Navigation() {
                   Green Star
                 </div>
                 <p className="text-[9px] tracking-widest uppercase text-gold-600">Designs & Construction</p>
-                <p className="text-[8px] tracking-widest uppercase text-gold-600">Pvt. Ltd.</p>
+                <p className="text-[8px] tracking-widest uppercase text-gold-600"></p>
               </div>
             </Link>
 
